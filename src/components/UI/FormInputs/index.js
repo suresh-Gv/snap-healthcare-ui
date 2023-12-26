@@ -1,4 +1,5 @@
 import Password from "./Password";
+import { Picklist } from "./Picklist";
 import TextInput from "./TextInput";
 
 export const Inputs=(props)=>{
@@ -10,7 +11,10 @@ export const Inputs=(props)=>{
             break;
         case 'Password':
             dispFormCont= <Password {...props}/>
-            break;			
+            break;
+            case 'Picklist':
+            dispFormCont= <Picklist {...props}/>
+            break;				
         default :
             dispFormCont = <TextInput {...props} />;	
     }

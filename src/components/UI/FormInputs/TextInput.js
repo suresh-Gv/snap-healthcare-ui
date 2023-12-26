@@ -12,7 +12,7 @@ const TextInput = (props)=>{
           type="text"
           className={props.className?props.className:''}
           placeholder={props.placeholder?props.placeholder:''}
-          style={props.style?props.style:''}
+          // style={props.style?props.style:''}
           onChange={e=>onChangeHandler(e)}
           value={value}
           />    

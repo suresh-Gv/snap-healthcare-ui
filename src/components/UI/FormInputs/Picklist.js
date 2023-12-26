@@ -1,38 +1,14 @@
-import React, { useState } from 'react';
-import Select from 'react-select';
-import AsyncSelect from 'react-select/async';
-import makeAnimated from 'react-select/animated';
-
+import React from "react";
 
 export const Picklist = (props) => {
-    const {options} = props;
-    const testOptions=['test','testOptions']
-    const [selectedOption,setSelectedOption] =useState({});
-    const animatedComponents = makeAnimated();
-    const onchangeHandler=(value) =>{
-         setSelectedOption(value);
-         props.onChange(value);
-    }
-    return (
-        <>
-        <Select
-        value={props.value}
-        onChange={onchangeHandler}
-        options={options}
-        isSearchable={true}
-        isClearable={true}
-        isDisabled={false}
-        closeMenuOnSelect={true}
-        components={animatedComponents}
-        defaultValue={props.defaultValue?props.defaultValue:''}
-        name=""
-        className=""
-        classNamePrefix=""
-        
-      />
-      </>
-    );
+  const {className,changeHandler,defaultValue,options} = props;
+  return (
+    <select className={className?className:"form-control"} onChange={changeHandler} defaultValue={defaultValue}>
+      {options.map((option, index) => (
+        <option key={index} value={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </select>
+  );
 };
-/**
- * Reference :https://react-select.com/home
- **/

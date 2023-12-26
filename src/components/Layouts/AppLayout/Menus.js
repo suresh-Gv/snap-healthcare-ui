@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useRef } from "react";
 import Icons from "../../UI/Icons";
 
 const Menus = (props) => {
   const {sideBarChangeHandler}=props;
-  const [isSidebarShown, setSidebarShown] = useState(false);
+  // const [isSidebarShown, setSidebarShown] = useState(false);
   const menuRef = useRef(null);
 
   /*------- outside Onclick for hide Setting Menu -----------*/
