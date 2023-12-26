@@ -5741,7 +5741,7 @@ a.close.disabled {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.3rem;
+  border-radius: 1.5rem;
   outline: 0;
 }
 
@@ -9997,8 +9997,16 @@ a:focus {
 .text-xs {
   font-size: .7rem;
 }
-
+.text-sm {
+  font-size: .8rem;
+}
+.text-md {
+  font-size: .9rem;
+}
 .text-lg {
+  font-size: 1rem;
+}
+.text-xl {
   font-size: 1.2rem;
 }
 

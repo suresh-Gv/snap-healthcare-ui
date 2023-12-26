@@ -33,12 +33,17 @@ body {
   margin: 0 10px;
 }
 
-.sh_loginCard form.sh_loginCre .form-control.form-control-user {
+.sh_loginCard form.sh_loginCre .form-control.form-control-user,
+.form-control.form-control-fields  {
   height: 35px;
   padding: 5px 10px;
   border: 3px solid #CADDDF !important;
 }
-.sh_loginCard form.sh_loginCre .form-control.form-control-user:focus { 
+.form-control.form-control-fields {
+  border-width: 1px !important;
+}
+.sh_loginCard form.sh_loginCre .form-control.form-control-user:focus,
+.form-control.form-control-fields:focus { 
   border-color: #bac8f3; 
   box-shadow: 0 0 0 0.1rem rgb(80, 125, 255);
 }
@@ -73,7 +78,8 @@ form.sh_loginCre .custom-checkbox.small label {
   line-height: 1.5rem;
 }
 
-form.sh_loginCre .form-control-user {
+form.sh_loginCre .form-control-user,
+.form-control-fields {
   font-size: 0.8rem;
   border-radius: 10rem;
   padding: 1.5rem 1rem;
@@ -197,4 +203,23 @@ aside .side_Inner {
   margin-bottom: 5px;
   font-size: 12px;
   color: white;
+}
+
+.modal-header .btn-close {
+  padding: calc(var(--bs-modal-header-padding-y) * 0.5) calc(var(--bs-modal-header-padding-x) * 0.5);
+  margin: calc(-0.5 * var(--bs-modal-header-padding-y)) calc(-0.5 * var(--bs-modal-header-padding-x)) calc(-0.5 * var(--bs-modal-header-padding-y)) auto;
+}
+button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+  cursor: pointer;
+}
+.btn-close {
+  box-sizing: content-box;
+  width: 1em;
+  height: 1em;
+  padding: 0.25em 0.25em;
+  color: #000;
+  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+  border: 0;
+  border-radius: 0.35rem;
+  opacity: 0.5;
 }
