@@ -52,3 +52,19 @@ export const isSet = (val, def, type = '') => {
     }
     return def;
 }
+
+//Non Numeric Input Validation {phone number}
+export const preventNonNumericalInput = (event) => {
+    const keyCode = event.keyCode || event.which;
+  
+    // Allow: Backspace, Tab, Enter, Delete
+    if (keyCode === 46 || keyCode === 8 || keyCode === 9 || keyCode === 13 || keyCode === 110 || keyCode === 190) {
+      return;
+    }
+  
+    // Ensure that it is a number and stop the keypress
+    if ((keyCode < 48 || keyCode > 57) && (keyCode < 96 || keyCode > 105)) {
+      event.preventDefault();
+    }
+  };
+  

@@ -9,7 +9,7 @@ const Header = (props)=>{
     const navigate = useNavigate();
     const profileDetails = useSelector((state) => state.session.profileDetails);
     console.log('profileDetails',profileDetails);
-    const {name,role} = profileDetails;
+    const { name = '', role = '' } = profileDetails || {};
     const onlogoutHandler = () => {
       AuthService.logout();
       navigate('/login');
