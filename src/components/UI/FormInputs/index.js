@@ -3,6 +3,7 @@ import { DatePicker } from "./DatePicker";
 import Password from "./Password";
 import PhoneNumber from "./PhoneNumber";
 import SelectList from "./SelectList";
+import { TextArea } from "./TextArea";
 import TextInput from "./TextInput";
 
 export const Inputs = (props) => {
@@ -29,9 +30,9 @@ export const Inputs = (props) => {
     case "Phone":
       dispFormCont = <PhoneNumber {...props} />;
       break;
-    // case 'TextArea':
-    //     dispFormCont= <SelectList {...props}/>
-    //     break;
+     case 'TextArea':
+        dispFormCont= <TextArea {...props}/>
+      break;
     default:
       dispFormCont = <TextInput {...props} />;
   }

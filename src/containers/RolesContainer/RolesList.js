@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RolesService from '../../services/RoleService';
 import TableGrid from '../../components/UI/TableGrid';
+import { AddFormModal } from '../DashboardContainer/AddFormModal';
 
 
 class RolesList extends Component {
@@ -22,10 +23,15 @@ class RolesList extends Component {
             tableRows:{
                 data:[]
             },
-        }
+        },
       // Your state variables go here
-    };
+      isModelOpen:false,
+      formData:{
+        role:'',
+        description:'',
+      },
   }
+}
 
   componentDidMount() {
     
@@ -45,10 +51,54 @@ class RolesList extends Component {
   handleEvent = () => {
     // Handler for events (e.g., button click)
   };
+  addFormHandler=()=>{
+    this.setState({isModelOpen:!this.state.isModelOpen})
+  }
+  addFormChangeHandler=(value,e)=>{
+    let fieldName=e.target.name;
+    console.log("addFormHandler",value,fieldName);
 
+    this.setState({
+      formData:{...this.state.formData,[fieldName]:value},
+    });
+  }
+  addFormSubmitHandler=()=>{
+    alert('Roles Add Form Submit test')
+    console.log('save roles data',this.state.formData);
+  }
   render() {
     const {tableRecords} = this.state;
+    console.log("RoleList State",this.state.formData);
+    const addFormInputFields=[
+      {
+        fieldType: "TextInput",
+        label: "Role",
+        placeholder: "Role",
+        className: "form-control form-control-fields",
+        name: "role",
+        value:this.state.formData.role,
+      },
+      {
+        fieldType: "TextArea",
+        label: "Description",
+        placeholder: "Description",
+        className: "form-control form-control-fields",
+        name: "description",
+        value:this.state.formData.description,
+      }
+    ];
     return (
+      <>
+      <AddFormModal
+      modelTitle={"Add Roles"}
+      isOpen={this.state.isModelOpen}
+      inputFields={addFormInputFields}
+      changeHandler={this.addFormChangeHandler}
+      formSubmitHandler={this.addFormSubmitHandler}
+      addFormHandler={this.addFormHandler}
+
+
+      />
       <div>
         <div className="row h-100">
           <div className="col-md-12 overflow-auto h-100">
@@ -77,7 +127,7 @@ class RolesList extends Component {
                       <div className="addAction">
                         <div className="btn-group">
                           <button
-                            // onClick={addFormHandler}
+                            onClick={this.addFormHandler}
                             className="btn btn-primary"
                           >
                             Add
@@ -119,6 +169,7 @@ class RolesList extends Component {
           </div>
         </div>
       </div>
+      </>
     );
   }
   fetchRolesList =async ()=>{

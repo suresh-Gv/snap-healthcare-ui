@@ -4,6 +4,7 @@ import TableGrid from "../../components/UI/TableGrid";
 import { AddFormModal } from "../DashboardContainer/AddFormModal";
 import UserService from "../../services/UserService";
 import http from "../../services/http";
+import RolesService from "../../services/RoleService";
 
 const UserList = () => {
   const [formData, setFormData] = useState({
@@ -70,7 +71,7 @@ const UserList = () => {
       }
     };
     const fetchRoles=async()=>{
-      const rolesResponse = await UserService.getRoles();
+      const rolesResponse = await RolesService.fetchRolesList();
       let roles=[];
       rolesResponse.map((itm)=>{
         let obj={label:itm.name,value:itm.name}

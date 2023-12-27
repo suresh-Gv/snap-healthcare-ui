@@ -54,22 +54,6 @@ const UserService = {
           }
         }
     },
-    getRoles:async() => {
-      try {
-        const response = await http.GET(`roles`)
-        console.log("response from http roles",response.data);
-        if(response.status===200 && response.data){
-          const resData = response.data;
-          if(resData.code===200 && resData.data){
-            return resData.data;
-          }
-        }
-        return null;
-      } catch (error) {
-        // console.error('Error fetching user:', error);
-        throw error;
-      }    
-    },
     //Save user
     saveUser:async (data)=>{
       try {
