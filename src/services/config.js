@@ -19,7 +19,6 @@ const requestHandler = request => {
     //Bearer Token
     if(AuthService.isAuthenticated()){
         const bearerToken = AuthService.getToken();
-        console.log('bearerToken',bearerToken);
         request.headers  = {
             ...headers,
             'Authorization': `Bearer ${bearerToken}`,

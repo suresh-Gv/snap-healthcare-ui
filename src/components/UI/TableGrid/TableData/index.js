@@ -5,7 +5,6 @@ import Actions from "./Action";
 
 const TableData =(props)=>{
     const {Tag} = props;
-    console.log('props.type',props.type);
     switch (isSet(props.type,'')) {
         case "THeader":
             return <THeader {...props} />;  

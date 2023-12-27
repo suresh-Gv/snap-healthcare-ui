@@ -2,12 +2,12 @@ import React from "react";
 import Wrap from "../../../hoc/Wrap";
 import TableData from "./TableData";
 
-const TableHeader=(props)=>{
+const TableHeader=({tableHeaders})=>{
     return (
         <Wrap>
          <thead>
               <tr>
-                {props.tableHead.map((item, itemIndex) => (
+                {tableHeaders.map((item, itemIndex) => (
                     <TableData value={item.label} keyIndex={itemIndex} type={'THeader'} />
                 ))}
               </tr>

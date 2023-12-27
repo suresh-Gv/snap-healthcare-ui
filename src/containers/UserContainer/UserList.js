@@ -28,10 +28,12 @@ const UserList = () => {
     // Add more columns as needed
   ];
   const [isAddFormModelOpen, setIsAddFormModelOpen] = useState(false);
-  const [tableGrid, setTableGrid] = useState({
-    headers:tableHeaders,
-    tableData:[]
-  });
+  const [tableRecords, setTableRecords] = useState({
+    tableHeaders:tableHeaders,
+    tableRows:{
+        data:[]
+    },
+});
   useEffect(()=>{
     const fetchUserList = async () => {
       try {
@@ -62,7 +64,7 @@ const UserList = () => {
           ]
         }
         // console.log(JSON.stringify({...tableGrid,tableData:tableData}));
-        setTableGrid({...tableGrid,tableData:tableData});
+        setTableRecords({...tableRecords,tableRows:{type:'tHeading',data:tableData}});
       } catch (error) {
         console.error('Error fetching user list:', error);
       }
@@ -240,7 +242,7 @@ const UserList = () => {
 
               <div className="card-body">
                 <div className="datatable-container dataTable">
-                  <TableGrid tableHead={tableGrid.headers} data={tableGrid.tableData} />
+                <TableGrid {...tableRecords} />
                 </div>
               </div>
             </div>

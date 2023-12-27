@@ -4,9 +4,12 @@ import Selectlist  from "../../components/UI/FormInputs/SelectList";
 import UserService from "../../services/UserService";
 import { AddFormModal } from "./AddFormModal";
 import TableGrid from "../../components/UI/TableGrid";
+import RolesService from "../../services/RoleService";
 
 const DashboardContainer = () => {
-  
+  useEffect(()=>{
+    RolesService.fetchRolesList();
+  },[])
   return (
     <>
         <div className="row h-100">

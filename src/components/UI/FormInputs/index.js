@@ -1,3 +1,4 @@
+import Checkbox from "./Checkbox";
 import { DatePicker } from "./DatePicker";
 import Password from "./Password";
 import PhoneNumber from "./PhoneNumber";
@@ -10,6 +11,9 @@ export const Inputs = (props) => {
     case "TextInput":
       dispFormCont = <TextInput {...props} />;
       break;
+    case "Checkbox":
+        dispFormCont = <Checkbox {...props} />;
+        break;
     case "Password":
       dispFormCont = <Password {...props} />;
       break;

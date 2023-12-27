@@ -46,6 +46,7 @@
     ];
     const Configures = [
       { Title: "Users", link: "/users" },
+      { Title: "Roles & Permission", link: "/roles" },
       { Title: "Company Divisions", link: "#" },
       { Title: "Clinic Locations", link: "#" },
       { Title: "Vaccine Administration", link: "#" },

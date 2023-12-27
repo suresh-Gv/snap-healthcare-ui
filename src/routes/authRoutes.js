@@ -1,6 +1,7 @@
 // routes.js
 import Dashboard from '../containers/DashboardContainer';
 import User from '../containers/UserContainer';
+import Roles from '../containers/RolesContainer';
 
 const defaultConfig = {
   layoutType:'App',
@@ -25,6 +26,12 @@ const PublicRoutes = [
         path:'/users/*',
         exact: true,
         element:User,
+        ...defaultConfig
+      },
+      {
+        path:'/roles/*',
+        exact: true,
+        element:Roles,
         ...defaultConfig
       }
     // Add more public routes as needed
