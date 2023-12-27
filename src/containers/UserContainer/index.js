@@ -3,13 +3,12 @@ import { Outlet } from "react-router-dom";
 import UserList from './UserList';
 import UserAdd from './UserAdd';
 import UserDetailView from './UserDetailView';
+import Wrap from '../../hoc/Wrap';
 
 const UserContainer = () => {
 
   return (
-    <div>  
-      <h1>User Container</h1>
-     
+    <Wrap>  
       {/* Other common elements in UserContainer */}
       <Routes>
         <Route path="/" key={0} layoutType={'App'} element={<UserList/>} />
@@ -20,7 +19,7 @@ const UserContainer = () => {
   
      
         
-    </div>
+    </Wrap>
   );
 };
 

@@ -11,4 +11,11 @@ const TableGrid  = (props)=>{
     )
 }
 
+TableGrid.defaultProps = {
+    className:'table',
+    width:'100%',
+    style:{},
+    additionalAttr:{}
+}
+
 export default TableGrid;

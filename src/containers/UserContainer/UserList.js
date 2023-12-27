@@ -2,14 +2,71 @@ import React, { useEffect, useState } from "react";
 import Selectlist from "../../components/UI/FormInputs/SelectList";
 import TableGrid from "../../components/UI/TableGrid";
 import { AddFormModal } from "../DashboardContainer/AddFormModal";
+import UserService from "../../services/UserService";
 import http from "../../services/http";
 
 const UserList = () => {
+  const tableHeaders =  [
+    { label: '',key:'isActive',type:'checkBox',inputType:'checkBox'},
+    { label: 'Role',key:'role',type:''},
+    { label: 'First Name',key:'firstName',dataType:''},
+    { label: 'last Name',key:'lastName',dataType:''},
+    { label: 'DOB',key:'dob',dataType:''},
+    { label: 'Email',key:'email',dataType:''},
+    { label: 'Phone',key:'phone',dataType:''},
+    { label: 'Active',key:'active',dataType:''},
+    { label: 'Action',key:'action',type:'Actions',dataType:''},
+    // Add more columns as needed
+  ];
   const [isAddFormModelOpen, setIsAddFormModelOpen] = useState(false);
+  const [tableGrid, setTableGrid] = useState({
+    headers:tableHeaders,
+    tableData:[]
+  });
+  
+  useEffect(()=>{
+    const fetchUserList = async () => {
+      try {
+        const users = await UserService.fetchUserList();
+        let tableData = [];
+        for (const role in users) {
+          tableData = [...tableData];
+          let cells = [];
+          users[role].map((user)=>{
+            cells.push({
+              isActive:false,
+              firstName:user.name,
+              lastName:user.name,
+              dob:'02/11/1990',
+              email:user.email,
+              phone:'000-000-0000',
+              active:'yes',
+              action:[],
+            })
+            console.log('user',user);
+          });
+          tableData= [
+            ...tableData,
+            {isHeading: true, cells: [{isActive:false, 'role': role, colspan: (tableHeaders.length) }] },
+            {
+              cells: cells
+            }
+          ]
+        }
+        // console.log(JSON.stringify({...tableGrid,tableData:tableData}));
+        setTableGrid({...tableGrid,tableData:tableData});
+      } catch (error) {
+        console.error('Error fetching user list:', error);
+      }
+    };
+    fetchUserList();
+  },[]);
+  
 
   useEffect(()=>{
     getRoles();
   },[]);
+
   const getRoles = () =>{
     http.GET("api/roles")
     .then(
@@ -25,11 +82,7 @@ const UserList = () => {
   const onChange = (e) => {
     console.log("onChange e");
   };
-  const tableHeaders = [
-    { label: "Role", key: "role" },
-    { label: "Role", key: "role" },
-    // Add more columns as needed
-  ];
+  
   const RolePicklistOptions = [
     { label: "- Role -", value: "" },
     { label: "Admin", value: "Admin" },
@@ -86,7 +139,6 @@ const UserList = () => {
         inputFields={AddFormInputFields}
         modelTitle={"Add User"}
       />
-        User List
         <div className="row h-100">
           <div className="col-md-12 overflow-auto h-100">
             <div className="card">
@@ -154,7 +206,11 @@ const UserList = () => {
                 </div>
               </div>
 
-              <TableGrid tableHead={tableHeaders} data={[]} />
+              <div className="card-body">
+                <div className="datatable-container dataTable">
+                  <TableGrid tableHead={tableGrid.headers} data={tableGrid.tableData} />
+                </div>
+              </div>
             </div>
           </div>
         </div>
