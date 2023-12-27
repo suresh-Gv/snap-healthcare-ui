@@ -6,6 +6,15 @@ import UserService from "../../services/UserService";
 import http from "../../services/http";
 
 const UserList = () => {
+  const [formData, setFormData] = useState({
+    role: '',
+    email: '',
+    firstName: '',
+    lastName: '',
+    phone: '',
+    dateofbirth:''
+  });
+  const [roles,setRoles]=useState([]);
   const tableHeaders =  [
     { label: '',key:'isActive',type:'checkBox',inputType:'checkBox'},
     { label: 'Role',key:'role',type:''},
@@ -23,7 +32,6 @@ const UserList = () => {
     headers:tableHeaders,
     tableData:[]
   });
-  
   useEffect(()=>{
     const fetchUserList = async () => {
       try {
@@ -59,77 +67,99 @@ const UserList = () => {
         console.error('Error fetching user list:', error);
       }
     };
+    const fetchRoles=async()=>{
+      const rolesResponse = await UserService.getRoles();
+      let roles=[];
+      rolesResponse.map((itm)=>{
+        let obj={label:itm.name,value:itm.name}
+        roles.push(obj);
+      });
+      setRoles(roles);
+    }   
     fetchUserList();
+    fetchRoles();
+ 
   },[]);
-  
-
-  useEffect(()=>{
-    getRoles();
-  },[]);
-
-  const getRoles = () =>{
-    http.GET("api/roles")
-    .then(
-        (response)=>{
-            console.log("Response: " +response);
-        }
-    );
-
-  }
   const addFormHandler = () => {
     setIsAddFormModelOpen(!isAddFormModelOpen);
   };
   const onChange = (e) => {
     console.log("onChange e");
   };
-  
-  const RolePicklistOptions = [
-    { label: "- Role -", value: "" },
-    { label: "Admin", value: "Admin" },
-    { label: "Billing Admin", value: "Billing Admin" },
-  ];
   const AddFormInputFields = [
     {
       fieldType: "SelectList",
       label: "Role",
-      options: [
-        { label: "Admin", value: "Admin" },
-        { label: "Admin", value: "Admin" },
-      ],
+      options: roles,
       placeholder: "",
       className: "form-control form-control-fields",
+      name: "role",
+      value: formData.role  ,
     },
     {
       fieldType: "TextInput",
       label: "Email",
       placeholder: "Email",
       className: "form-control form-control-fields",
+      name: "email",
+      value: formData.email,
     },
     {
       fieldType: "TextInput",
       label: "First Name",
       placeholder: "First Name",
       className: "form-control form-control-fields",
+      name:"firstName",
+      value: formData.firstName,
     },
     {
       fieldType: "TextInput",
       label: "Last Name",
       placeholder: "Last Name",
       className: "form-control form-control-fields",
+      name:"lastName",
+      value: formData.lastName,
+
     },
     {
       fieldType: "Phone",
       label: "Phone Number",
       placeholder: "Number",
       className: "form-control form-control-fields",
+      name:"phone",
+      value: formData.phone,
     },
     {
         fieldType: "Date",
-        label: "DOB",
-        placeholder: "DOB",
+        label: "Date of Birth",
+        placeholder: "",
         className: "form-control form-control-fields",
+        name:"dateofbirth",
+        value: formData.dateofbirth,
       },
   ];
+  const changeHandler = (val, e) => {
+    let fieldName = e.target.name;
+    console.log('changeHandler',val, fieldName);
+    setFormData({
+      ...formData,
+      [fieldName]: val,
+    });
+  };
+  const addFormSubmitHandler=() =>{
+    console.log("FormData",formData);
+    let dummyData=
+    {
+      "first_name": "dasdsad Raj",
+      "last_name": "suyambu",
+      "dob": "02/25/1989",
+      "phone_number": null,
+      "active_status": 1,
+      "email": "thilakarrraj1.s@exsdsample.com"
+       
+  }
+     UserService.saveUser(dummyData);
+  }
   return (
     <>
       <div>
@@ -138,6 +168,8 @@ const UserList = () => {
         addFormHandler={addFormHandler}
         inputFields={AddFormInputFields}
         modelTitle={"Add User"}
+        changeHandler={changeHandler}
+        formSubmitHandler={addFormSubmitHandler}
       />
         <div className="row h-100">
           <div className="col-md-12 overflow-auto h-100">
@@ -149,9 +181,9 @@ const UserList = () => {
                       <div className="form-group-fields row">
                         <div className="col-md-2 px-1">
                           <Selectlist
-                            options={RolePicklistOptions}
+                            options={roles}
                             defaultValue=""
-                            onChange={onChange}
+                            changeHandler={onChange}
                           />
                         </div>
                         <div className="col-md-2 px-1">

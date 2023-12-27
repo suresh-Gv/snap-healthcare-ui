@@ -3,7 +3,7 @@ import { TableBody } from "./TableBody";
 import {TableHeader} from "./TableHeader";
 
 const Table = (props) => {
-  console.log("Table", props.tableHeaders);
+  console.log("Table", props);
 
   return (
     <>

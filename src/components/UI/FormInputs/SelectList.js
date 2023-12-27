@@ -11,7 +11,8 @@ const PickList = (props)=>{
     value,
     style,
     options,
-    additionalAttrs 
+    additionalAttrs,
+    name,
   } = props;
   // Handler
    const {
@@ -24,6 +25,7 @@ const PickList = (props)=>{
     return(
       <select
         className={className}
+        name={name}
         value={value}
         {...style}
         {...additionalAttrs }

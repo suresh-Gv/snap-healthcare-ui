@@ -10,7 +10,8 @@ const TextInput = (props)=>{
     className,
     placeholder,
     value,
-    style
+    style,
+    name,
   } = props;
   // Handler
    const {
@@ -18,12 +19,14 @@ const TextInput = (props)=>{
   } = props;
 
     const onChangeHandler = (e)=>{
+      console.log('jj',e.target.value);
       changeHandler(e.target.value,e);       
     } 
     return(
         <input 
           type={type}
           className={className}
+          name={name}
           placeholder={placeholder}
           value={value}
           {...style}

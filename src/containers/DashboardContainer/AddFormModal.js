@@ -1,13 +1,11 @@
-import React from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import { Inputs } from '../../components/UI/FormInputs';
+import React, { useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import { Inputs } from "../../components/UI/FormInputs";
 
 export const AddFormModal = (props) => {
-  const { isOpen, addFormHandler, inputFields,modelTitle} = props;
-  const changeHandler=(e)=>{
-
-  };
+  const { isOpen, addFormHandler, inputFields, modelTitle, changeHandler } =
+    props;
 
   return (
     <>
@@ -20,24 +18,22 @@ export const AddFormModal = (props) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <div className="row">
-
-              {inputFields&&inputFields.map((field, index) => (
-               <div class="col-12">
-               <div class="form-group">
-                 <label class="text-gray-900 text-md"> {field.label} </label>
-                 {/* <input type="text" class="form-control form-control-fields" id="exampleFirstName" placeholder="First Name"/> */}
-                 <Inputs {...field} changeHandler={()=>changeHandler()}/>
-               </div>
-             </div>
+          <div className="row">
+            {inputFields &&
+              inputFields.map((field, index) => (
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="text-gray-900 text-md"> {field.label} </label>
+                    {/* <input type="text" class="form-control form-control-fields" id="exampleFirstName" placeholder="First Name"/> */}
+                    <Inputs {...field} changeHandler={changeHandler} />
+                  </div>
+                </div>
               ))}
-              </div>
+          </div>
         </Modal.Body>
-        <Modal.Footer justify-content-center>
-          <Button
-            className="btn btn-primary rounded-pill"
-            type="button"
-          >
+
+        <Modal.Footer className="d-flex justify-content-center">
+          <Button variant="primary" className="rounded-pill" onClick={()=>props.formSubmitHandler()}>
             Submit
           </Button>
         </Modal.Footer>
