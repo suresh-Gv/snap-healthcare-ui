@@ -8,20 +8,27 @@ import {
 // import FormInputs from "../../components/UI/FormInputs";
 import AuthService from "../../services/AuthService";
 import { Inputs } from "../../components/UI/FormInputs";
+import UserService from "../../services/UserService";
+import { useDispatch } from 'react-redux';
+import {setProfileDetails} from '../../store/SessionSlice';
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogin = async () => {
     // Handle login logic here
     const credentials = { email, password };
-    const userData = await AuthService.login(credentials);
+    const userData    = await AuthService.login(credentials);
+    const profileData = await UserService.fetchProfile();
+    dispatch(setProfileDetails(profileData));
     const isAuthenticated = AuthService.isAuthenticated();
     if (isAuthenticated === true) {
       navigate("/dashboard");
     }
+    //api/user_profile
     console.log("Logging in with:", userData, AuthService.getToken());
   };
   return (

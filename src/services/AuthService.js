@@ -1,19 +1,21 @@
 // src/services/authService.js
 import http from './http';
+import { persistor } from '../store';
 
 const AuthService = {
   login: async (credentials) => {
     const {email,password} = credentials;
     const params = `email=${email}&password=${password}`;
     try {
-      const response = await http.POST('/login?'+params, credentials);
+      const response = await http.POST('login?'+params, credentials);
       // Handle token storage, session management, etc.
-      console.log('responseData',response);
+      // console.log('responseData',response);
       if(response.status===200 && response.data){
             const resData = response.data;
             if(resData.code===200 && resData.data){
                 // console.log('responseData',resData.data);
-                AuthService.storeToken(resData.data.token);
+                AuthService.storeToken(resData.data.access_token);
+              
                 return response.data;
             }else{
                 return null;
@@ -33,6 +35,7 @@ const AuthService = {
     try {
       // Perform logout actions, e.g., invalidate token
       // Optionally, you might also make an API call to log out on the server
+      persistor.purge();
       AuthService.removeToken();
     } catch (error) {
     //   console.error('Error during logout:', error);
@@ -44,6 +47,7 @@ const AuthService = {
   },
   removeToken: () => {
     // Remove the token from storage
+    
     localStorage.removeItem('access_token');
   },
   getToken: () => {

@@ -1,10 +1,9 @@
 import Password from "./Password";
-import { Picklist } from "./Picklist";
+import SelectList from "./SelectList";
 import TextInput from "./TextInput";
 
 export const Inputs=(props)=>{
     let dispFormCont = null;
-    console.log('inputField',props.fieldType);
     switch(props.fieldType) {
         case 'TextInput' :
             dispFormCont = <TextInput {...props} />;
@@ -12,9 +11,15 @@ export const Inputs=(props)=>{
         case 'Password':
             dispFormCont= <Password {...props}/>
             break;
-            case 'Picklist':
-            dispFormCont= <Picklist {...props}/>
-            break;				
+        case 'SelectList':
+            dispFormCont= <SelectList {...props}/>
+            break;
+        case 'MultiSelectList':
+            dispFormCont= <SelectList {...props}/>
+            break;
+        // case 'TextArea':
+        //     dispFormCont= <SelectList {...props}/>
+        //     break;				
         default :
             dispFormCont = <TextInput {...props} />;	
     }

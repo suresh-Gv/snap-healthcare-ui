@@ -1,13 +1,16 @@
 // / routes/index.js
 import React,{Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import AuthService from '../services/AuthService';
 import AuthRoutes from './authRoutes';
 import UnAuthRoutes from './unAuthRoutes';
 import Layouts from '../components/Layouts';
+
 // import Wrap from '../hoc/Wrap';
 
 const AppRoutes = () => {
+  const dispatch = useDispatch();
   const PrivateRoute = ({ children }) => {
     const isAuthenticated = AuthService.isAuthenticated();
     return isAuthenticated ? children: <Navigate to="/login" />;

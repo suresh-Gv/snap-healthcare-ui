@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 
 // import {setAndGetAttributes} from './FormInputFunctions';
 
-const TextInput = (props)=>{
+const PickList = (props)=>{
   // Props Attr
    const {
-    type,
     className,
-    placeholder,
+    // placeholder,
     value,
-    style
+    style,
+    options,
+    additionalAttrs 
   } = props;
   // Handler
    const {
@@ -21,28 +22,35 @@ const TextInput = (props)=>{
       changeHandler(e.target.value,e);       
     } 
     return(
-        <input 
-          type={type}
-          className={className}
-          placeholder={placeholder}
-          value={value}
-          {...style}
-          onChange={(e)=>onChangeHandler(e)}    />    
+      <select
+        className={className}
+        value={value}
+        {...style}
+        {...additionalAttrs }
+        onChange={(e) => onChangeHandler(e)} >
+      {options.map((option, index) => (
+        <option key={index} value={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </select>   
     )
 }
-TextInput.defaultProps = {
-  type:'text',
+
+PickList.defaultProps = {
   isMandatory:false,
   className: 'form-control',
   placeholder:'',
   value:'',
   style:{},
+  options:[],
+  additionalAttrs :{},
   validation:{
     isValid:true,message:''
   },
 
 }
-TextInput.propTypes = {
+PickList.propTypes = {
   type: PropTypes.string,
   isMandatory: PropTypes.bool,
   className: PropTypes.string,
@@ -54,4 +62,4 @@ TextInput.propTypes = {
   changeHandler: PropTypes.func.isRequired,
 };
 
-export default TextInput;
+export default PickList;

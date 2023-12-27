@@ -1,13 +1,32 @@
 import axios from 'axios';
+import AuthService from './AuthService';
+
 const API_URL = process.env.REACT_APP_API_URL;
+
+//Default Headers
+let headers = {
+  'Content-Type': 'application/json',
+};
+
+
+
 const configAxios = axios.create({
     baseURL:  API_URL,
 });
 
 const requestHandler = request => {
-    // Auth Token  
-    // const accessToken = localStorage.getItem('access_token');
+    //Headers
+    //Bearer Token
+    if(AuthService.isAuthenticated()){
+        const bearerToken = AuthService.getToken();
+        console.log('bearerToken',bearerToken);
+        request.headers  = {
+            ...headers,
+            'Authorization': `Bearer ${bearerToken}`,
+        }
+    }
     request.params = {
+        // ...headers
         // access_token: accessToken
     }
     // console.log('request',request);

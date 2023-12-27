@@ -1,40 +1,31 @@
-import React, { useState } from "react";
-import { Picklist } from "../../components/UI/FormInputs/Picklist";
+import React, { useEffect, useState } from "react";
+import Selectlist  from "../../components/UI/FormInputs/SelectList";
 // import { useNavigate } from 'react-router-dom';
-// import AuthService from "../../services/AuthService";
-// import {RichText} from "../../components/UI/FormInputs/RichTextEditor"
+import UserService from "../../services/UserService";
 import { AddFormModal } from "./AddFormModal";
-import Table from "./Table";
-import simplify from "semver/ranges/simplify";
+import TableGrid from "../../components/UI/TableGrid";
 
 const DashboardContainer = () => {
   const [isAddFormModelOpen, setIsAddFormModelOpen] = useState(false);
   const addFormHandler = () => {
     setIsAddFormModelOpen(!isAddFormModelOpen);
   };
+  useEffect(()=>{
+     UserService.fetchUserList();
+  },[])
   const RolePicklistOptions = [
     { label: "- Role -", value: "" },
     { label: "Admin", value: "Admin" },
-    { label: "Billing Admin", value: "Billing Admin" },
-    { label: "Billing Clinic Admin", value: "Billing Clinic Admin" },
-    { label: "Clinic", value: "Clinic" },
-    { label: "Company", value: "Company" },
-    { label: "Employee", value: "Employee" },
-    { label: "Lab Admin", value: "Lab Admin" },
+    { label: "Billing Admin", value: "Billing Admin" }
   ];
   const onChange = (e) => {
     console.log("onChange e");
   };
   const AddFormInputFields = [
     {
-      fieldType: "Picklist",
+      fieldType: "SelectList",
       label: "Role",
       options: [
-        { label: "Admin", value: "Admin" },
-        { label: "Admin", value: "Admin" },
-        { label: "Admin", value: "Admin" },
-        { label: "Admin", value: "Admin" },
-        { label: "Admin", value: "Admin" },
         { label: "Admin", value: "Admin" },
         { label: "Admin", value: "Admin" },
       ],
@@ -68,74 +59,23 @@ const DashboardContainer = () => {
     },
   ];
 
-  const tableHeaders = [
-    "Role",
-    "FirstName",
-    "LastName",
-    "DOB",
-    "Email",
-    "Phone",
-    "Active",
-    "Actions",
+  const tableHeaders =  [
+    { label: 'Role',key:'role',  },
+    { label: 'Role',key:'role',  },
+    // Add more columns as needed
   ];
-  const tableBody = [
-    {
-      role: "Sys Admin",
-      data: [
-        [
-          "",
-          "Billing",
-          "Admin",
-          "10/10/1990",
-          "billing.adm@mailinator.com",
-          "000-000-0000",
-          "Yes",
-        ],
-        [
-          "",
-          "Qa g",
-          "Bill Admin",
-          "11/11/2000",
-          "qabill1@mailinator.com",
-          "111-111-1111",
-          "Yes",
-        ],
-      ],
-    },
-    {
-      role: "Billing Clinic Admin",
-      data: [
-        [
-          "",
-          "Clinic",
-          "Bill Admin",
-          "10/10/1990",
-          "qabill1@mailinator.com",
-          "000-111-0000",
-          "No",
-        ],
-        [
-          "",
-          "Bill Admin",
-          "Admin",
-          "10/10/1990",
-          "billing.clinic.adm@mailinator.com",
-          "000-111-0000",
-          "Yes",
-        ],
-        [
-          "",
-          "Clinic",
-          "Bill Admin",
-          "10/10/1990",
-          "qabill1@mailinator.com",
-          "000-111-0000",
-          "Yes",
-        ],
-      ],
-    },
-    // Add more role entries as needed
+  const data = [
+    // { isHeading: true, cells: [{ name: 'Sys Admin', colspan: 8 }] },
+    // { cells: [{ name: '', colspan: tableHeaders.length }] }, // Empty row without heading
+    { cells: [{ name: 'Billing', colspan: 1 }, { name: 'Admin', colspan: 1 }, /* Add more cells with keys */] },
+    { cells: [{ name: 'Qa g', colspan: 1 }, { name: 'Bill Admin', colspan: 1 }, /* Add more cells with keys */] },
+    // { isHeading: true, cells: [{ name: 'Billing Clinic Admin', colspan:  tableHeaders.length }] },
+    { cells: [{ name: 'Billing', colspan: 1 }, { name: 'Admin', colspan: 1 }, /* Add more cells with keys */] },
+    // { cells: [{ name: '', colspan:  tableHeaders.length }] }, // Empty row without heading
+    { cells: [{ name: 'Clinic', colspan: 1 }, { name: '', colspan:  tableHeaders.length }] },
+    // Add more rows as needed
   ];
+  
 
   return (
     <>
@@ -155,7 +95,7 @@ const DashboardContainer = () => {
                     <div className="form-group d-flex mb-0 justify-content-between">
                       <div className="form-group-fields row">
                         <div className="col-md-2 px-1">
-                          <Picklist
+                          <Selectlist
                             options={RolePicklistOptions}
                             defaultValue=""
                             onChange={onChange}
@@ -214,7 +154,7 @@ const DashboardContainer = () => {
               </div>
             
           
-              <Table tableHeaders={tableHeaders} tableBody={tableBody} />
+              <TableGrid tableHead={tableHeaders} data={data} />
             </div>
           </div>
         </div>

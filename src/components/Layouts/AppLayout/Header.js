@@ -3,10 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { _t } from "../../../utils/i18nUtils";
 import AuthService from "../../../services/AuthService";
 import Wrap from "../../../hoc/Wrap";
+import { useSelector } from 'react-redux';
 
 const Header = (props)=>{
     const navigate = useNavigate();
-
+    const profileDetails = useSelector((state) => state.session.profileDetails);
+    console.log('profileDetails',profileDetails);
+    const {name,role} = profileDetails;
     const onlogoutHandler = () => {
       AuthService.logout();
       navigate('/login');
@@ -42,7 +45,7 @@ const Header = (props)=>{
                  <li className="nav-item dropdown">
                        <a className="nav-link dropdown-toggle" href="#!" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                     
                            <img className="img-profile rounded-circle" src="assets/img/User_profile.svg" alt={_t('snap health admin')}/>
-                           <span className="ml-2 d-none d-lg-inline text-black text-lg">{_t('Snap Healthcare Admin')}</span>
+                           <span className="ml-2 d-none d-lg-inline text-black text-lg">{_t(name+' '+role)}</span>
                        </a>
                     {/* <!-- Dropdown - User Information --> */}
                     <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
