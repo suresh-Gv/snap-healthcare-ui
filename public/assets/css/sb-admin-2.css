@@ -9997,15 +9997,19 @@ a:focus {
 .text-xs {
   font-size: .7rem;
 }
+
 .text-sm {
   font-size: .8rem;
 }
+
 .text-md {
   font-size: .9rem;
 }
+
 .text-lg {
   font-size: 1rem;
 }
+
 .text-xl {
   font-size: 1.2rem;
 }
@@ -10572,6 +10576,19 @@ a:focus {
     font-family: 'Font Awesome 5 Free';
   }
   .sidebar .nav-item .nav-link[data-toggle="collapse"].collapsed::after {
+    content: '\f105';
+  }
+
+  [data-bs-toggle="collapse"]::after {
+    width: 1rem;
+    text-align: center; 
+    vertical-align: 0;
+    border: 0;
+    font-weight: 900;
+    content: '\f107';
+    font-family: 'Font Awesome 5 Free';
+  }
+  [data-bs-toggle="collapse"].collapsed::after {
     content: '\f105';
   }
   .sidebar .sidebar-brand .sidebar-brand-icon i {

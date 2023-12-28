@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 // import FormInputs from "../../components/UI/FormInputs";
 import AuthService from "../../services/AuthService";
-import { Inputs } from "../../components/UI/FormInputs";
+import FormInputs from "../../components/UI/FormInputs";
 import UserService from "../../services/UserService";
 import { useDispatch } from 'react-redux';
 import {setProfileDetails} from '../../store/SessionSlice';
@@ -47,7 +47,7 @@ const LoginForm = () => {
                         <form className="sh_loginCre">
                           <div className="form-group">
                             {/* <input type="email" className="form-control form-control-user" id="" aria-describedby="" placeholder="Email Address"/> */}
-                            <Inputs
+                            <FormInputs
                               fieldType="TextInput"
                               value={email}
                               changeHandler={(e) => setEmail(e)}
@@ -58,7 +58,7 @@ const LoginForm = () => {
                           </div>
 
                           <div className="form-group">
-                            <Inputs
+                            <FormInputs
                               fieldType="Password"
                               value={password}
                               changeHandler={(e) => setPassword(e)}

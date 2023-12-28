@@ -43,7 +43,7 @@ const Header = (props)=>{
                    
                  {/* <!-- Nav Item - User Information --> */}
                  <li className="nav-item dropdown">
-                       <a className="nav-link dropdown-toggle" href="#!" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                     
+                       <a className="nav-link dropdown-toggle" href="#!" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                     
                            <img className="img-profile rounded-circle" src="assets/img/User_profile.svg" alt={_t('snap health admin')}/>
                            <span className="ml-2 d-none d-lg-inline text-black text-lg">{_t(name+' '+role)}</span>
                        </a>

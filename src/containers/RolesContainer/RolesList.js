@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import RolesService from '../../services/RoleService';
 import TableGrid from '../../components/UI/TableGrid';
-import { AddFormModal } from '../DashboardContainer/AddFormModal';
+import AddRole from './AddRole';
+// import { AddFormModal } from '../DashboardContainer/AddFormModal';
 
 
 class RolesList extends Component {
@@ -9,11 +10,11 @@ class RolesList extends Component {
     super(props);
     // Initialize state or bind methods if needed
     const tableHeaders =  [
-        { label: '',key:'isActive',type:'checkBox',inputType:'checkBox'},
-        { label: 'Role',key:'role',type:''},
-        { label: 'Description',key:'description',dataType:''},
-        { label: 'Created At',key:'createdAt',dataType:''},
-        { label: 'Active',key:'active',dataType:''},
+        { label: '',key:'isActive',type:'checkBox'},
+        { label: 'Role',key:'role',type:'',inputType:'TextInput'},
+        { label: 'Description',key:'description',inputType:'TextArea'},
+        { label: 'Created At',key:'createdAt'},
+        { label: 'Active',key:'active',inputType:'Checkbox'},
         { label: 'Action',key:'action',type:'Actions',dataType:''},
         // Add more columns as needed
       ];
@@ -26,10 +27,6 @@ class RolesList extends Component {
         },
       // Your state variables go here
       isModelOpen:false,
-      formData:{
-        role:'',
-        description:'',
-      },
   }
 }
 
@@ -54,50 +51,17 @@ class RolesList extends Component {
   addFormHandler=()=>{
     this.setState({isModelOpen:!this.state.isModelOpen})
   }
-  addFormChangeHandler=(value,e)=>{
-    let fieldName=e.target.name;
-    console.log("addFormHandler",value,fieldName);
 
-    this.setState({
-      formData:{...this.state.formData,[fieldName]:value},
-    });
-  }
-  addFormSubmitHandler=()=>{
-    alert('Roles Add Form Submit test')
-    console.log('save roles data',this.state.formData);
-  }
+  
   render() {
     const {tableRecords} = this.state;
-    console.log("RoleList State",this.state.formData);
-    const addFormInputFields=[
-      {
-        fieldType: "TextInput",
-        label: "Role",
-        placeholder: "Role",
-        className: "form-control form-control-fields",
-        name: "role",
-        value:this.state.formData.role,
-      },
-      {
-        fieldType: "TextArea",
-        label: "Description",
-        placeholder: "Description",
-        className: "form-control form-control-fields",
-        name: "description",
-        value:this.state.formData.description,
-      }
-    ];
+   
     return (
       <>
-      <AddFormModal
-      modelTitle={"Add Roles"}
-      isOpen={this.state.isModelOpen}
-      inputFields={addFormInputFields}
-      changeHandler={this.addFormChangeHandler}
-      formSubmitHandler={this.addFormSubmitHandler}
-      addFormHandler={this.addFormHandler}
-
-
+      <AddRole
+        modelTitle={"Add Roles"}
+        isOpen={this.state.isModelOpen}
+        addFormHandler={this.addFormHandler}
       />
       <div>
         <div className="row h-100">

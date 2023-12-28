@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
-import Selectlist  from "../../components/UI/FormInputs/SelectList";
+import React, { useEffect} from "react";
+// import Selectlist  from "../../components/UI/FormInputs/SelectList";
 // import { useNavigate } from 'react-router-dom';
-import UserService from "../../services/UserService";
-import { AddFormModal } from "./AddFormModal";
-import TableGrid from "../../components/UI/TableGrid";
-import RolesService from "../../services/RoleService";
+// import UserService from "../../services/UserService";
+// import TableGrid from "../../components/UI/TableGrid";
+// import RolesService from "../../services/RoleService";
 
 const DashboardContainer = () => {
-  useEffect(()=>{
-    RolesService.fetchRolesList();
-  },[])
+  // useEffect(()=>{
+  //   RolesService.fetchRolesList();
+  // },[])
   return (
     <>
         <div className="row h-100">

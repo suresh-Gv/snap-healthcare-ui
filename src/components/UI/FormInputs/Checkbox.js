@@ -5,15 +5,16 @@ const CheckboxInput = (props) => {
   const {
     className,
     label,
-    checked,
+    value,
     style,
     changeHandler,
   } = props;
 
   const onChangeHandler = (e) => {
+    console.log('e',e.target.checked);
     changeHandler(e.target.checked, e);
   };
-
+  let checked = (value=='Yes' || value=='yes' || value=='true')?true:false;
   return (
     <div className={className}>
       <label>

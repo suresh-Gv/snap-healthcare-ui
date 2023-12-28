@@ -6,8 +6,9 @@ import SelectList from "./SelectList";
 import { TextArea } from "./TextArea";
 import TextInput from "./TextInput";
 
-export const Inputs = (props) => {
+ const FormInputs = (props) => {
   let dispFormCont = null;
+  console.log('propsfieldType',props);
   switch (props.fieldType) {
     case "TextInput":
       dispFormCont = <TextInput {...props} />;
@@ -38,3 +39,5 @@ export const Inputs = (props) => {
   }
   return <>{dispFormCont}</>;
 };
+
+export default FormInputs;

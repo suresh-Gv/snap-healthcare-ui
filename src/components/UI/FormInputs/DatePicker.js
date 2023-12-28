@@ -5,9 +5,10 @@ export const DatePicker = (props) => {
 
   return (
     <input
-      type="date"
+      type="text"
       className={className}
       value={value}
+      format={'mm/dd/yyy'}
       onChange={(e)=>changeHandler(e.target.value,e)}
       placeholder={placeholder}
       name={props.name?props.name:''}

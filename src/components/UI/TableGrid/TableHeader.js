@@ -8,7 +8,7 @@ const TableHeader=({tableHeaders})=>{
          <thead>
               <tr>
                 {tableHeaders.map((item, itemIndex) => (
-                    <TableData value={item.label} keyIndex={itemIndex} type={'THeader'} />
+                    <TableData value={item.label} keyIndex={itemIndex} key={itemIndex} type={'THeader'} />
                 ))}
               </tr>
             </thead>
