@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> Snap Healthcare </title>
+
+    <!-- Custom fonts for this template-->
+    <link href="assets/icons/fontawesome/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="assets/css/sb-admin-2.css" rel="stylesheet">
+    <link href="assets/css/common.css" rel="stylesheet">
+    <link href="assets/css/sb_table.css" rel="stylesheet">
+    <link href="assets/css/sh_forms.css" rel="stylesheet">
+</head>
+
+<body class="">
+   <!-- Page Wrapper -->
+   <div id="wrapper">
+      <!-- Sidebar -->
+      <aside>
+          <ul class="navbar-nav sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+             <!-- Sidebar - Brand -->
+             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sh_logoIcon">
+                    <div class="sidebar-brand-icon ">
+                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 46.701 50.625"><defs><style>.a{fill:#034ea1;}.b{fill:#0072bb;}.c{fill:#00adee;}</style></defs><g transform="translate(-0.003)"><path class="a" d="M50.794,127.021c3.083.373,4.9083,1.019,6.449,4.247l.1.226c1.734-2.873-.1-5.691-3.5-7.227-2.9-1.307-8.5-.519-9.232.259a2.884,2.884,0,0,0-.532,3.489C45.306,127.242,48.843,126.786,50.794,127.021Zm-8.229-8.88c2.265-2.228,7.963-2.319,11.858-1.5a9.448,9.448,0,0,1,5.5,3.742,6.029,6.029,0,0,1,.65,1.383c1.27-.025,10.439-.242,12.916-1.52.519-.267,1.3-.73.993-2.376-.379-2.023-8.192-2.248-9.644-2.361-6.046-.475-17.531.053-17.531.053,1.572-3.87,4.254-9.827,3.644-13.962-.215-1.47-1.617-3.207-2.921-1.69-.173.4-.864,2.054-1.856,4.009-3.26,6.455-5.377,7.308-9.791,12.343-8.28,9.448-5.246,21.3,10.718,21.911a13.988,13.988,0,0,0,6.437-1.444c3.717-2.022,2.075-5.941-.346-7.1-1.838-.878-6.729-.756-8.033.114-.041.028-2.137,3.717,4.423,3.43l.086,2.038c-6.259.274-7.322-3-6.773-5.264a5.188,5.188,0,0,1-.669-5.6A4.634,4.634,0,0,1,42.565,118.141ZM44,119.6a2.415,2.415,0,0,0-.364,3.128c2.2-1.36,8.056-1.661,11.045-.314a10.2,10.2,0,0,1,4.011,3.077C60.7,117.094,46.552,117.078,44,119.6Zm3.032,20.613c-17.807-.685-21.5-14.655-12.176-25.288,4.254-4.854,6.406-5.778,9.509-11.92,1.1-2.174,1.842-4,1.842-4a3.418,3.418,0,0,1,4.343-1.326c5.134,2.009,1.111,12.368-.173,15.724,3.068-.105,9.972-.281,14.631.086,2.784.22,10.769.182,11.486,4.017,1.088,5.806-6.688,5.792-10.3,6.056-2.3.169-4.4.228-5.282.248a9.951,9.951,0,0,1-.768,3.824c-.086.2-.161.376-.22.5a6.58,6.58,0,0,1-2.079,6.023C57.494,138.543,50.871,140.355,47.028,140.208Z" transform="translate(-29.89 -89.591)"/><path class="a" d="M370.888,16.371a16.885,16.885,0,0,0-10.538-6.12l.513-3.07a20.047,20.047,0,0,1,16.863,20.55l-3.121-.165A16.868,16.868,0,0,0,370.888,16.371Z" transform="translate(-331.781 -7.18)"/><path class="b" d="M357.086,81.158a11.426,11.426,0,0,0-7.166-4.149l.443-2.649A14.156,14.156,0,0,1,362.3,88.8l-2.688-.144A11.423,11.423,0,0,0,357.086,81.158Z" transform="translate(-322.253 -68.553)"/><path class="c" d="M342.575,142.855a5.705,5.705,0,0,0-3.625-2.075l.471-2.821A8.586,8.586,0,0,1,346.7,146.6l-2.863-.15A5.694,5.694,0,0,0,342.575,142.855Z" transform="translate(-312.231 -126.655)"/></g></svg> 
+                    </div>
+                </div>
+                <!-- <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div> -->
+             </a>
+             <!-- Divider -->
+             <!-- <hr class="sidebar-divider my-0"> -->
+             <!-- Nav Item - Dashboard -->
+             <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <span class="sh_menuIcon">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 52.001 45.646"><defs><linearGradient id="a" x1="0.773" y1="1.25" x2="0.227" y2="-0.25" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#6114f8"/><stop offset="0.167" stop-color="#6e23f9"/><stop offset="1" stop-color="#00b6ff"/></linearGradient></defs><path d="M49.4,22.325H42.478V44.472H29.149V30.229H20V44.472H6.912V22.325H0L24.7,0l9.873,8.894V5.4h6.175v9.11Z" transform="translate(1.299 0.673)" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1" fill-rule="evenodd" fill="url(#a)"/></svg>
+                    </span>
+                    <span class="text-gray-600">Companies</span>
+                </a>
+             </li>
+
+              <li class="nav-item ">
+                <a class="nav-link" href="index.html">
+                <span class="sh_menuIcon"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 43.967 48.612">
+                      <defs>
+                        <linearGradient id="linear-gradient" x1="1" y1="1.087" x2="-0.094" y2="-0.165" gradientUnits="objectBoundingBox">
+                          <stop offset="0" stop-color="#6114f8"/>
+                          <stop offset="0.167" stop-color="#6e23f9"/>
+                          <stop offset="1" stop-color="#00b6ff"/>
+                        </linearGradient>
+                      </defs>
+                      <g id="Schedule_Icon" data-name="Schedule Icon" transform="translate(-40.5 -694.5)">
+                        <path id="i" d="M74.93,691.5a2.2,2.2,0,0,1-1.5-.4,1.729,1.729,0,0,1-.44-1.327v-4.04a1.716,1.716,0,0,1,.44-1.356,2.322,2.322,0,0,1,1.5-.375,2.44,2.44,0,0,1,1.555.375,1.716,1.716,0,0,1,.44,1.356v4.04a1.729,1.729,0,0,1-.44,1.327A2.309,2.309,0,0,1,74.93,691.5Zm-22.892,0a2.2,2.2,0,0,1-1.5-.4,1.73,1.73,0,0,1-.44-1.327v-4.04a1.717,1.717,0,0,1,.44-1.356,2.322,2.322,0,0,1,1.5-.375,2.441,2.441,0,0,1,1.556.375,1.718,1.718,0,0,1,.44,1.356v4.04a1.731,1.731,0,0,1-.44,1.327A2.31,2.31,0,0,1,52.037,691.5Zm32.049-3.751a.908.908,0,0,1,.616.231.735.735,0,0,1,.264.577V697.1a.734.734,0,0,1-.264.577.907.907,0,0,1-.616.231H42.88a.907.907,0,0,1-.616-.231A.735.735,0,0,1,42,697.1v-8.541a.735.735,0,0,1,.264-.577.908.908,0,0,1,.616-.231h4.461v2.02a5.475,5.475,0,0,0,.235,1.587,3.775,3.775,0,0,0,.792,1.414,4.167,4.167,0,0,0,1.467,1.039,6.2,6.2,0,0,0,4.4,0,4.485,4.485,0,0,0,1.5-1.039,3.6,3.6,0,0,0,.822-1.414,5.471,5.471,0,0,0,.235-1.587v-2.02H70.234v2.02a5.475,5.475,0,0,0,.235,1.587,3.774,3.774,0,0,0,.792,1.414,4.168,4.168,0,0,0,1.467,1.039,6.2,6.2,0,0,0,4.4,0,4.482,4.482,0,0,0,1.5-1.039,3.6,3.6,0,0,0,.822-1.414,5.475,5.475,0,0,0,.235-1.587v-2.02Zm-9.744,20.776q0-.4-.469-.4H72.112a.243.243,0,0,0-.176.058l-5.048,2.424a.545.545,0,0,0-.235.462l.411,2.828a.233.233,0,0,0,.059.173.677.677,0,0,1,.117.173.394.394,0,0,0,.411,0l2.289-.866V724.8a.36.36,0,0,0,.411.4h3.522q.469,0,.469-.4Zm-18.02,16.91a8.812,8.812,0,0,0,5.371-1.5,4.771,4.771,0,0,0,2.025-4.04,3.484,3.484,0,0,0-1.057-2.77,7.641,7.641,0,0,0-2.231-1.385,4.147,4.147,0,0,0,2.817-3.924,3.29,3.29,0,0,0-1.585-2.857,7.45,7.45,0,0,0-4.226-1.068,11.968,11.968,0,0,0-4.872.866q-.293.231-.235.462l.411,2.828a.267.267,0,0,0,.176.289.33.33,0,0,0,.411.058,6.9,6.9,0,0,1,3.229-.866q1.467,0,1.7.433a1.605,1.605,0,0,1,.235.721,1.542,1.542,0,0,1-.528,1.01,4.4,4.4,0,0,1-2.641.664.36.36,0,0,0-.411.4v2.885a.36.36,0,0,0,.411.4,7.058,7.058,0,0,1,3.17.606,1.675,1.675,0,0,1,.7,1.472,1.4,1.4,0,0,1-.7,1.212,3.261,3.261,0,0,1-1.82.462,10.531,10.531,0,0,1-1.966-.173,13.622,13.622,0,0,1-1.908-.52.552.552,0,0,0-.352,0,.338.338,0,0,0-.176.289l-.411,2.885q-.117.289.235.4a8.469,8.469,0,0,0,2.055.577A14.141,14.141,0,0,0,56.322,725.437Zm27.764-24.585a.908.908,0,0,1,.616.231.735.735,0,0,1,.264.577v29.087a.824.824,0,0,1-.264.606.851.851,0,0,1-.616.26H42.88a.852.852,0,0,1-.616-.26.824.824,0,0,1-.264-.606V701.66a.735.735,0,0,1,.264-.577.908.908,0,0,1,.616-.231Z" transform="translate(-1 11)" stroke="rgba(0,0,0,0)" stroke-width="1" fill="url(#linear-gradient)"/>
+                      </g>
+                    </svg>
+
+                </span>
+                <span class="text-gray-600">Appointments</span></a>
+             </li>
+
+
+              <li class="nav-item ">
+                <a class="nav-link" href="index.html">
+                <span class="sh_menuIcon">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 191.598 194.31">
+                      <defs>
+                        <linearGradient id="linear-gradient" x1="1.443" y1="1.521" x2="-0.443" y2="-0.249" gradientUnits="objectBoundingBox">
+                          <stop offset="0" stop-color="#6114f8"/>
+                          <stop offset="0.167" stop-color="#6e23f9"/>
+                          <stop offset="1" stop-color="#00b6ff"/>
+                        </linearGradient>
+                      </defs>
+                      <path id="Whiteboard_Icon" data-name="Whiteboard Icon" d="M176.683,62.991l-.5-.5a87.337,87.337,0,0,1-17.473,94.852L174.686,185.3l-14.977,8.986-14.477-24.961A87.924,87.924,0,0,1,95.809,184.8a83.711,83.711,0,0,1-51.42-16.974L28.913,194.287,13.438,185.3,30.91,155.348A86.812,86.812,0,0,1,8.445,96.939a88.444,88.444,0,0,1,6.982-34.43l-.493.484S-15.018,33.537,9.943,9.075c23.963-23.963,52.418,6.989,52.418,6.989l-.5.5A86.642,86.642,0,0,1,96.309,9.575a88.444,88.444,0,0,1,34.43,6.982l-.984-.493s28.456-30.453,51.919-6.989C206.637,34.037,176.683,62.991,176.683,62.991ZM95.31,27.547A68.893,68.893,0,1,0,164.2,96.439,68.894,68.894,0,0,0,95.31,27.547ZM63.36,87.953H87.323V45.519H104.8v59.907H63.36Z" transform="translate(-0.01 0.023)" fill-rule="evenodd" fill="url(#linear-gradient)"/>
+                    </svg>
+
+                </span>
+                <span class="text-gray-600">White Board</span></a>
+             </li>
+
+              <li class="nav-item ">
+                <a class="nav-link" href="index.html">
+                <span class="sh_menuIcon"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 41.137 51.172">
+                      <defs>
+                        <linearGradient id="linear-gradient" x1="0.773" y1="1.25" x2="0.227" y2="-0.25" gradientUnits="objectBoundingBox">
+                          <stop offset="0" stop-color="#6114f8"/>
+                          <stop offset="0.167" stop-color="#6e23f9"/>
+                          <stop offset="1" stop-color="#00b6ff"/>
+                        </linearGradient>
+                      </defs>
+                      <path id="work-restrictions" d="M223.526,165.154H216V155.12a12.539,12.539,0,0,1,12.543-12.543h15.051l-3.418,12.543H233.56a10.048,10.048,0,0,0-10.034,10.034Zm10.034-5.017a5.017,5.017,0,1,0,0,10.034h2.509l2.734-10.034Zm15.051-16.5v26.534a7.524,7.524,0,0,0,7.526-7.526V155.12A12.53,12.53,0,0,0,248.611,143.637ZM236.069,120a11.289,11.289,0,1,0,11.289,11.289A11.289,11.289,0,0,0,236.069,120Z" transform="translate(-215.5 -119.5)" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1" fill="url(#linear-gradient)"/>
+                    </svg>
+
+                </span>
+                <span class="text-gray-600">Employee / Patient Visits</span></a>
+             </li>
+
+              <li class="nav-item ">
+                <a class="nav-link" href="index.html">
+                <span class="sh_menuIcon"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 47.49 41.418"><defs><style>.a{stroke:rgba(0,0,0,0);stroke-miterlimit:10;fill-rule:evenodd;fill:url(#a);}</style><linearGradient id="a" x1="0.773" y1="1.25" x2="0.227" y2="-0.25" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#6114f8"/><stop offset="0.167" stop-color="#6e23f9"/><stop offset="1" stop-color="#00b6ff"/></linearGradient></defs><path class="a" d="M45.588,109.155,37.47,94.819l-.518-13.991h.864a.743.743,0,0,0,.691-.691V78.755a.743.743,0,0,0-.691-.691H27.365a.743.743,0,0,0-.691.691v1.382a.743.743,0,0,0,.691.691h.777V94.819L24,102.332l5.441,9.586a6.743,6.743,0,0,1,1.209,3.023H42.565c3.8,0,5.182-2.591,3.023-5.786Zm-16.582,3.109-8.9-15.718-.6-15.287h.95a.774.774,0,0,0,.777-.777V79.014a.774.774,0,0,0-.777-.777H9.056a.774.774,0,0,0-.777.777v1.468a.774.774,0,0,0,.777.777h.864V96.546L1.2,112.178c-2.245,3.455-.691,6.3,3.455,6.3H25.638c4.145,0,5.614-2.764,3.368-6.218ZM12.856,97.323V81.259h3.627l.6,16.064,4.4,8.291H8.8l4.059-8.291Zm18.05-1.814V80.828h3.282l.518,14.682,4.059,7.6H27.105l3.8-7.6Z" transform="translate(0.358 -77.564)"/></svg>
+                </span>
+                <span class="text-gray-600">Labs</span></a>
+             </li>
+
+              <li class="nav-item ">
+                <a class="nav-link" href="index.html">
+                <span class="sh_menuIcon"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 42.921 44.725">
+                      <defs>
+                        <linearGradient id="linear-gradient" x1="1" y1="1.68" x2="-1.319" y2="-1.387" gradientUnits="objectBoundingBox">
+                          <stop offset="0" stop-color="#6114f8"/>
+                          <stop offset="0.167" stop-color="#6e23f9"/>
+                          <stop offset="1" stop-color="#00b6ff"/>
+                        </linearGradient>
+                      </defs>
+                      <g id="orders_and_results_icon" data-name="orders and results icon" transform="translate(-89.8 -46.9)">
+                        <path id="Path_44" data-name="Path 44" d="M670.154,661.9a9.956,9.956,0,1,0,9.954,9.954A9.956,9.956,0,0,0,670.154,661.9Zm1.138,10.684v-4.4a1.134,1.134,0,0,0-2.268,0v3.752l-2.372,1.372a1.134,1.134,0,0,0,1.134,1.965l2.933-1.695s.012,0,.016-.008a1.142,1.142,0,0,0,.561-.968l0-.016Z" transform="translate(-547.386 -590.187)" fill-rule="evenodd" fill="url(#linear-gradient)"/>
+                        <path id="Path_45" data-name="Path 45" d="M115.554,91.532H93.96a4.16,4.16,0,0,1-4.16-4.16V51.06a4.16,4.16,0,0,1,4.16-4.16h25.4a4.16,4.16,0,0,1,4.16,4.16V69.466c-.25-.016-.5-.024-.754-.024a12.163,12.163,0,0,0-7.569,2.627,1.354,1.354,0,0,0-.674-.178,1.379,1.379,0,0,0-1.214,2.033,12.224,12.224,0,0,0,2.243,17.607Zm-18.14-9h12a1.134,1.134,0,0,0,0-2.268h-12a1.134,1.134,0,1,0,0,2.268Zm0-8.118h12a1.134,1.134,0,0,0,0-2.268h-12a1.134,1.134,0,1,0,0,2.268Zm17.111-10.64a1.38,1.38,0,1,1-1.38,1.38,1.379,1.379,0,0,1,1.38-1.38ZM97.413,66.291h12a1.134,1.134,0,0,0,0-2.268h-12a1.134,1.134,0,1,0,0,2.268Zm17.111-10.64a1.38,1.38,0,1,1-1.38,1.38A1.379,1.379,0,0,1,114.525,55.651ZM97.413,58.169h12a1.134,1.134,0,0,0,0-2.268h-12a1.134,1.134,0,1,0,0,2.268Z" transform="translate(0 0)" fill-rule="evenodd" fill="url(#linear-gradient)"/>
+                      </g>
+                    </svg>
+
+                </span>
+                <span class="text-gray-600">Orders/Results</span></a>
+             </li>
+
+     
+
+              <li class="nav-item ">
+                <a class="nav-link" href="index.html">
+                <span class="sh_menuIcon"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 196.204 190.44">
+                      <defs>
+                        <linearGradient id="linear-gradient" x1="1.344" y1="1.68" x2="-0.403" y2="-0.589" gradientUnits="objectBoundingBox">
+                          <stop offset="0" stop-color="#6114f8"/>
+                          <stop offset="0.167" stop-color="#6e23f9"/>
+                          <stop offset="1" stop-color="#00b6ff"/>
+                        </linearGradient>
+                      </defs>
+                      <g id="medical-chart-folder" transform="translate(-45.14 -61.393)">
+                        <path id="Path_42" data-name="Path 42" d="M220.207,338.871h-68L140.684,317.49A13.133,13.133,0,0,0,129.11,310.6H58.29a13.163,13.163,0,0,0-13.15,13.15V435.85a21.145,21.145,0,0,0,21.105,21.137H220.207a21.16,21.16,0,0,0,21.137-21.137V359.976a21.145,21.145,0,0,0-21.137-21.105M174.659,408.7h-22.41v22.41H134.236V408.7h-22.41V390.684h22.41v-22.41h18.013v22.41h22.41Z" transform="translate(0 -205.154)" fill="url(#linear-gradient)"/>
+                        <path id="Path_43" data-name="Path 43" d="M239.72,111.217l10.888,20.154h66.577a1.076,1.076,0,0,1,.312.031V71.658a10.3,10.3,0,0,0-10.3-10.264H173.233a10.294,10.294,0,0,0-10.264,10.264V103.1h63.117a15.467,15.467,0,0,1,13.634,8.112m17.955-18.6h15.2v-15.2H285.1v15.2h15.2v12.217H285.1v15.2H272.875v-15.2h-15.2ZM179.083,75.155h66.826a1.17,1.17,0,0,1,0,2.34H179.083a1.17,1.17,0,0,1,0-2.34M177.913,88.47a1.17,1.17,0,0,1,1.17-1.17h66.826a1.17,1.17,0,0,1,0,2.34H179.083a1.17,1.17,0,0,1-1.171-1.17" transform="translate(-96.998)" fill="url(#linear-gradient)"/>
+                      </g>
+                    </svg>
+
+                </span>
+                <span class="text-gray-600">Employee / Patient Chart</span></a>
+             </li>
+
+              <li class="nav-item ">
+                <a class="nav-link js-menu-toggle" href="#" data-toggle="collapse">
+                <span class="sh_menuIcon">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 38.078 38.174"><defs><style>.a{stroke:rgba(0,0,0,0);stroke-miterlimit:10;fill-rule:evenodd;fill:url(#a);}</style><linearGradient id="a" x1="0.773" y1="1.25" x2="0.227" y2="-0.25" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#6114f8"/><stop offset="0.167" stop-color="#6e23f9"/><stop offset="1" stop-color="#00b6ff"/></linearGradient></defs><path class="a" d="M37.078,15.918v5.338s-2.383.667-6,1.334a9.923,9.923,0,0,1-.572,1.525c2.383,2.955,3.908,5.052,3.908,5.052L29.072,34.5s-2.1-1.525-5.052-3.908c-.477.191-.953.381-1.525.572-.667,3.622-1.334,6-1.334,6H15.823s-.667-2.383-1.334-6a9.923,9.923,0,0,1-1.525-.572C10.008,32.98,7.911,34.5,7.911,34.5L2.574,29.167s1.525-2.1,3.908-5.052c-.191-.477-.381-1.048-.572-1.525C2.383,21.828,0,21.16,0,21.16V15.823s2.383-.667,6-1.334c.191-.572.381-1.048.572-1.525C4.194,10.008,2.669,7.911,2.669,7.911L8.007,2.574S10.1,4.1,13.058,6.482c.477-.191,1.048-.381,1.525-.572C15.251,2.383,15.918,0,15.918,0h5.338s.667,2.383,1.334,6c.477.191,1.048.381,1.525.572,2.955-2.383,5.052-3.908,5.052-3.908L34.5,8.007S32.98,10.1,30.6,13.058c.191.477.381.953.572,1.525C34.6,15.251,37.078,15.918,37.078,15.918Zm-18.587-4.1a6.672,6.672,0,1,0,6.672,6.672A6.631,6.631,0,0,0,18.492,11.819Z" transform="translate(0.5 0.5)"/></svg>
+                </span>
+                <span class="text-gray-600">Configure</span></a>
+             </li>
+           
+          </ul>
+          <div class="side_Inner">
+
+
+            <div class="nav-menu">
+                 
+                <a href="#" class="side_InnerText"> Users </a>
+
+                <a href="#" class="side_InnerText"> Company Divisions </a>
+
+                <a href="#" class="side_InnerText"> Clinic Locations </a>
+
+                <a href="#" class="side_InnerText"> Vaccine Administration </a>
+
+                <a href="#" class="side_InnerText"> Basic Physicals </a>
+
+                <a href="#" class="side_InnerText"> Activities </a>
+
+                <a href="#" class="side_InnerText"> Clinics & Providers </a>
+
+                <a href="#" class="side_InnerText"> Lab Ordered Message </a>
+
+                <a href="#" class="side_InnerText"> Incoming Results </a>
+
+                <a href="#" class="side_InnerText"> Failed EZ-Reader </a>
+
+                <a href="#" class="side_InnerText"> CDPH Export </a>
+
+                <a href="#" class="side_InnerText"> NY Export </a>
+
+                <a href="#" class="side_InnerText"> Feedback </a>
+
+                <a href="#" class="side_InnerText"> Laboratory </a>
+
+                <a href="#" class="side_InnerText"> API Log </a>
+
+                <a href="#" class="side_InnerText"> Tutorials </a>
+
+                <a href="#" class="side_InnerText"> Main Features </a>
+
+                <a href="#" class="side_InnerText"> Announcements </a>
+
+                <a href="#" class="side_InnerText"> Clinic Usage </a>
+
+                <a href="#" class="side_InnerText"> Consent Form </a>
+
+                <a href="#" class="side_InnerText"> Activity Consents </a>
+
+                <a href="#" class="side_InnerText"> Consent Declination </a> 
+
+                <a href="#" class="side_InnerText"> Announcements </a>
+                    
+            </div>
+            </div>
+      </aside>
+      <!-- End of Sidebar -->
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+         <!-- Main Content -->
+         <div id="content">
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top" style="background: #f4faff;">
+               <!-- Sidebar Toggle (Topbar) -->
+               <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+               <i class="fa fa-bars"></i>
+               </button>
+                
+               <ul class="navbar-nav ml-auto">
+                  
+                    
+                  <!-- Nav Item - User Information -->
+                  <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                     
+                            <img class="img-profile rounded-circle" src="assets/img/User_profile.svg">
+                            <span class="ml-2 d-none d-lg-inline text-black text-lg"> Snap Healthcare Admin </span>
+                        </a>
+                     <!-- Dropdown - User Information -->
+                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Profile
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Change Password
+                        </a> 
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout
+                        </a>
+                     </div>
+                  </li>
+               </ul>
+            </nav>
+            <!-- End of Topbar -->
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+              <div class="row h-100">
+                <div class="col-md-12 overflow-auto h-100">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row">
+                        <div class="col-12">
+                            <div class="form-group d-flex mb-0 justify-content-between align-items-center">                              
+                              
+                              <div> Permission Control </div>
+                              <div class="addAction">
+                                <div class="btn-group ">
+                                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRoleModal"> Add </button>
+                                    
+                                 
+                                   
+                                </div>
+                              </div>
+                            </div>
+
+
+
+
+                        </div>
+                      </div>
+                      
+                    </div>
+
+                    <div class="card-body p-0">
+                      <div class="datatable-container dataTable">
+                         <table width="100%" cellspacing="0" style="width: 100%;" class="table table-striped table-bordered mb-0">
+                            <thead>
+                               <tr>
+                                  <th style="width: 20%;">
+                                     <a href="#" class="datatable-sorter"> Role </a>
+                                  </th>
+                                  <th style="width:20%; text-align: center;">
+                                     <a href="#" class="datatable-sorter"> Listing Item </a>
+                                  </th>
+                                  <th style="width: 60%; text-align: center;">
+                                     <a href="#" class="datatable-sorter"> Permission Access</a>
+                                  </th>
+                               </tr>
+                            </thead>
+                            <tbody>
+
+                               <tr class="Tdheading">
+                                  <td colspan="9" class="pl-5" > 
+                                    <a href="#" data-bs-toggle="collapse" data-bs-target="#r1" aria-expanded="false" class="collapsed"> Sys Admin </a>
+                                  </td>
+                               </tr>
+                               <tr id="r1" class="accordion-collapse collapse">
+                                  <td colspan="" style="border: 0;"></td>
+                                  <td colspan="2" class="p-0">
+                                     <table width="100%" cellspacing="0" style="width: 100%; text-align: center;" class="table table-striped mb-0">
+                                        <thead>
+                                           <tr>
+                                              <th style="width: 25%;background-color: white;"></th>
+                                              <th style="width: 20%;">
+                                                   Create  
+                                              </th>
+                                              <th style="width: 20%;">
+                                                  Read  
+                                              </th>
+                                              <th style="width: 20%;">
+                                                  Edit  
+                                              <th style="width: 20%;">
+                                                   Delete  
+                                              </th>
+                                           </tr>
+                                        </thead>
+                                        <tbody>
+                                           <tr>
+                                              <td style="width: 20%;">
+                                                 Labs
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox" checked=""> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                           </tr>
+                                           <tr>
+                                              <td style="width: 20%;">
+                                                 Labs
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox" checked=""> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                           </tr>
+                                           <tr>
+                                              <td style="width: 20%;">
+                                                 Lab Assistant
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox" checked=""> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                           </tr>
+                                           <tr>
+                                              <td style="width: 20%;">
+                                                 Clinic Physician
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox" checked=""> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                           </tr>
+                                        </tbody>
+                                     </table>
+                                  </td>
+                               </tr>
+
+
+                                <tr class="Tdheading">
+                                  <td colspan="9" class="pl-5" > 
+                                    <a href="#" data-bs-toggle="collapse" data-bs-target="#r2" aria-expanded="false" class="collapsed">  Admin </a>
+                                  </td>
+                               </tr>
+                               <tr id="r2" class="accordion-collapse collapse">
+                                  <td colspan="" style="border: 0;"></td>
+                                  <td colspan="2" class="p-0">
+                                     <table width="100%" cellspacing="0" style="width: 100%; text-align: center;" class="table table-striped mb-0">
+                                        <thead>
+                                           <tr>
+                                              <th style="width: 25%;background-color: white;"></th>
+                                              <th style="width: 20%;">
+                                                   Create  
+                                              </th>
+                                              <th style="width: 20%;">
+                                                  Read  
+                                              </th>
+                                              <th style="width: 20%;">
+                                                  Edit  
+                                              <th style="width: 20%;">
+                                                   Delete  
+                                              </th>
+                                           </tr>
+                                        </thead>
+                                        <tbody>
+                                           <tr>
+                                              <td style="width: 20%;">
+                                                 Labs
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox" checked=""> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                           </tr>
+                                           <tr>
+                                              <td style="width: 20%;">
+                                                 Labs
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox" checked=""> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                           </tr>
+                                           <tr>
+                                              <td style="width: 20%;">
+                                                 Lab Assistant
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox" checked=""> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                           </tr>
+                                           <tr>
+                                              <td style="width: 20%;">
+                                                 Clinic Physician
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox" checked=""> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                              <td style="width: 20%;">
+                                                 <div class="form-check">
+                                                    <input class="form-check-input" id="checkAccountChanges" type="checkbox"> 
+                                                 </div>
+                                              </td>
+                                           </tr>
+                                        </tbody>
+                                     </table>
+                                  </td>
+                               </tr>
+
+                            </tbody>
+                         </table>
+                      </div>
+
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <!-- /.container-fluid -->
+         </div>
+         <!-- End of Main Content -->
+      
+      </div>
+      <!-- End of Content Wrapper -->
+   </div>
+   <!-- End of Page Wrapper -->
+   
+
+
+
+   <!-- Bootstrap core JavaScript-->
+   <script src="assets/js/jquery.min.js"></script>
+   <script src="assets/js/bootstrap.bundle.min.js"></script>
+   <!-- Core plugin JavaScript-->
+   <script src="assets/js/jquery.easing.min.js"></script>
+   <!-- Custom scripts for all pages-->
+   <script src="assets/js/sh_main.js"></script>
+ 
+
+
+   <!-- Modal -->
+<div class="modal fade" id="addRoleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-gray-900" id="exampleModalLabel"> Add Role </h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">                
+
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="text-gray-900 text-md"> Role Name </label>
+                    <input type="text" class="form-control form-control-fields" id="" placeholder="Role Name">
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="text-gray-900 text-md"> Description </label>
+                    <textarea class="form-control"></textarea>
+                  </div>
+                </div>
+
+                
+               
+            </div>
+
+
+            </div>
+            <div class="modal-footer justify-content-center"> 
+              <button class="btn btn-primary rounded-pill" type="button"> Save </button></div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+</html>
