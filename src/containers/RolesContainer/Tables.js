@@ -2,12 +2,12 @@ export const Tables = (props) => {
   console.log("Tables", props.permisssionBody);
   return (
     <>
-      <div class="card-body p-0">
-        <div class="datatable-container dataTable">
+      <div className="card-body p-0">
+        <div className="datatable-container dataTable">
           <table
             width="100%"
             cellspacing="0"
-            class="table table-striped table-bordered mb-0"
+            className="table table-striped table-bordered mb-0"
           >
             <thead>
               <tr>
@@ -21,26 +21,26 @@ export const Tables = (props) => {
               </tr>
             </thead>
             <tbody>
-              <tr class="Tdheading">
-                <td colspan="9" class="pl-5">
+              <tr className="Tdheading">
+                <td colspan="9" className="pl-5">
                   <a
                     href="#"
                     data-bs-toggle="collapse"
                     data-bs-target="#r1"
                     aria-expanded="false"
-                    class="collapsed"
+                    className="collapsed"
                   >
                     labAdmin
                   </a>
                 </td>
               </tr>
-              <tr id="r1" class="accordion-collapse collapse">
+              <tr id="r1" className="accordion-collapse collapse">
                 <td colspan=""></td>
-                <td colspan="2" class="p-0">
+                <td colspan="2" className="p-0">
                   <table
                     width="100%"
                     cellspacing="0"
-                    class="table table-striped mb-0"
+                    className="table table-striped mb-0"
                   >
                     <thead>
                       <tr>

@@ -81,21 +81,21 @@ export const PermissionList = () => {
   console.log("State Roles", roles);
   return (
     <>
-      <div class="container-fluid">
-        <div class="row h-100">
-          <div class="col-md-12 overflow-auto h-100">
-            <div class="card">
-              <div class="card-header">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="form-group d-flex mb-0 justify-content-between align-items-center">
+      <div className="container-fluid">
+        <div className="row h-100">
+          <div className="col-md-12 overflow-auto h-100">
+            <div className="card">
+              <div className="card-header">
+                <div className="row">
+                  <div className="col-12">
+                    <div className="form-group d-flex mb-0 justify-content-between align-items-center">
                       <div> Permission Control </div>
-                      <div class="addAction">
-                        <div class="btn-group ">
+                      <div className="addAction">
+                        <div className="btn-group ">
                           <button
-                            class="btn btn-primary"
-                            data-bs-toggle="modal"
-                            data-bs-target="#addRoleModal"
+                            className="btn btn-primary"
+                            // data-bs-toggle="modal"
+                            // data-bs-target="#addRoleModal"
                           >
                             Add
                           </button>
