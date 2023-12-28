@@ -42,6 +42,23 @@ const RolesService = {
         throw error;
       }
     },
+    saveRole:async(data) => {
+      try {
+        
+        const response = await http.POST(""+data);
+        if(response.status===200 && response.data){
+          const resData = response.data;
+          if(resData.code===200 && resData.data){
+            // console.log('resData.data',resData.data);
+            return resData.data;
+          }
+        }
+        return null;
+      } catch (error) {
+        // console.error('Error fetching user:', error);
+        throw error;
+      }
+    },
     
     
   };
