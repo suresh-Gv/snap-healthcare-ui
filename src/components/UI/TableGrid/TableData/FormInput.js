@@ -4,7 +4,8 @@ import FormInputs from "../../FormInputs";
 import { isObject,isSet } from "../../../../utils/commonUtils";
 
 const FormInput = (props)=>{
-    const {inputType,label,className,formDataInEdit,thHeadKey,changeHandler} = props;
+    const {inputType,label,className,thHeadKey,changeHandler,gridEditProps} = props;
+    const {formDataInEdit} = gridEditProps;
     let disValue = '';
     try{
         disValue = formDataInEdit[thHeadKey];
@@ -16,12 +17,13 @@ const FormInput = (props)=>{
     }catch(e){
 
     }
-   
+   console.log('disValue',disValue,thHeadKey);
     return(
         <Wrap>
             <td>
             <FormInputs 
                 fieldType={inputType}
+                name={thHeadKey}
                 className={(inputType!=='Checkbox')?className:''}
                 changeHandler={(val)=>changeHandler(thHeadKey,val)}
                 placeholder={label}

@@ -10,6 +10,7 @@ const AuthService = {
       const response = await http.POST('login?'+params, credentials);
       // Handle token storage, session management, etc.
       // console.log('responseData',response);
+      
       if(response.status===200 && response.data){
             const resData = response.data;
             if(resData.code===200 && resData.data){
@@ -21,11 +22,18 @@ const AuthService = {
                 return null;
             }
       }else{
+       
         return null;
       }
       
     
     } catch (error) {
+      if(error.status){
+        const resData = error.data;
+        if(resData.code && resData.data){
+            return resData;
+        }
+      }
       console.log('Error during login:', error);
     //   throw error;
     }

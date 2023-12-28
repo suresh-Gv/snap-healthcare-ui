@@ -31,8 +31,8 @@ const Header = (props)=>{
         clickHandler:()=>onlogoutHandler(),
         fontIcon:'fa-sign-out-alt'
     }]
-    return(
-        
+    return( 
+        <>
            <nav className="navbar navbar-expand navbar-light topbar mb-4 static-top" style={{background:'#f4faff'}}>
               {/* <!-- Sidebar Toggle (Topbar) --> */}
               <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
@@ -66,7 +66,7 @@ const Header = (props)=>{
            </nav>
            
       
-         
+        </> 
     )
 }
 export default Header;

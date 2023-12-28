@@ -24,6 +24,14 @@ export const isDate = (sDate) => {
     return (tryDate && tryDate.toString() != "NaN" && tryDate != "Invalid Date");
 }
 
+export const capitalizeFirstLetter = (text) => {
+    let returnData = '';
+    if(text) {
+      returnData = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+    }
+
+    return returnData;
+  }
 //CHECK IS EMAIL OR NOT
 export const isEmail = (email) => {
     return email.match(

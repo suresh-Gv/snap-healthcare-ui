@@ -1,4 +1,6 @@
 import React, { useEffect} from "react";
+import { useToast } from '../../context/ToaxtContext';
+
 // import Selectlist  from "../../components/UI/FormInputs/SelectList";
 // import { useNavigate } from 'react-router-dom';
 // import UserService from "../../services/UserService";
@@ -9,6 +11,12 @@ const DashboardContainer = () => {
   // useEffect(()=>{
   //   RolesService.fetchRolesList();
   // },[])
+  const { showToast } = useToast();
+  const handleShowToast = () => {
+    showToast('error', 'This is a success message');
+  };
+
+  // showToast('success', 'This is a success message');
   return (
     <>
         <div className="row h-100">
@@ -19,6 +27,7 @@ const DashboardContainer = () => {
                   <h1>Dashboard</h1>
                 </div>
               </div>
+              
            
             </div>
           </div>

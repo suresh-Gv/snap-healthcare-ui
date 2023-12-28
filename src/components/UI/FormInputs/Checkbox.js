@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isSet } from '../../../utils/commonUtils';
 
 const CheckboxInput = (props) => {
   const {
@@ -7,21 +8,24 @@ const CheckboxInput = (props) => {
     label,
     value,
     style,
+    name,
     changeHandler,
   } = props;
 
   const onChangeHandler = (e) => {
-    console.log('e',e.target.checked);
+    // console.log('e',e.target.checked);
     changeHandler(e.target.checked, e);
   };
-  let checked = (value=='Yes' || value=='yes' || value=='true')?true:false;
+  let isChecked = (value === true || isSet(value,'').toString().toLowerCase() === 'yes')?true:false;
+  // console.log('checked',isChecked,props);
   return (
     <div className={className}>
       <label>
         <input
           type="checkbox"
-          checked={checked}
+          checked={isChecked}
           style={style}
+          name={name}
           onChange={(e) => onChangeHandler(e)}
         />
         {label}
@@ -33,7 +37,10 @@ const CheckboxInput = (props) => {
 CheckboxInput.defaultProps = {
   className: 'checkbox-container',
   checked: false,
+  value: false,
+  name:'default',
   style: {},
+  onChangeHandler:()=>{}
 };
 
 CheckboxInput.propTypes = {

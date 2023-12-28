@@ -5,7 +5,6 @@ const Password = (props)=>{
     const {value,changeHandler} = props;
 
     const onChangeHandler = (e)=>{
-      console.log('onChangeHandler',e.target.value);
         changeHandler(e.target.value);       
     } 
     return(

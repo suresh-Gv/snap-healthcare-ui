@@ -8,7 +8,6 @@ import TextInput from "./TextInput";
 
  const FormInputs = (props) => {
   let dispFormCont = null;
-  console.log('propsfieldType',props);
   switch (props.fieldType) {
     case "TextInput":
       dispFormCont = <TextInput {...props} />;

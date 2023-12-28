@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import FormInputs from "../../components/UI/FormInputs";
 import UserService from "../../services/UserService";
-
+import { isObject, isSet } from "../../utils/commonUtils";
+import { useToast } from '../../context/ToaxtContext';
 const AddFormModal = (props) => {
+  const { showToast } = useToast();
+  const [validation,setValidation] = useState({});
   const [formData,setFormData] = useState({
     assigned_role: '',
     email: '',
@@ -68,23 +70,48 @@ const AddFormModal = (props) => {
     ];
     const changeHandler = (val, e) => {
       let fieldName = e.target.name;
+      let updateValidation = {...validation};
+      setValidation({
+        ...updateValidation,
+        [fieldName]:''
+      });
       setFormData({
           ...formData,
           [fieldName]: val,
         });
     };
-    const formSubmitHandler = () => {
-      console.log("FormData", formData);
-      // let dummyData = {
-      //   "first_name": "dasdsad Raj",
-      //   "last_name": "suyambu",
-      //   "dob": "02/25/1989",
-      //   "phone_number": null,
-      //   "active_status": 1,
-      //   "email": "thilakarrraj1.s@exsdsample.com"
-      // }
-      UserService.saveUser(formData);
+    const formSubmitHandler = async () => {
+      let updateValidation = {...validation};
+      try{
+        const data  = await UserService.saveUser(formData);
+        if(data.status && data.status=="ERROR"){
+          if(isObject(data.data)){
+            for (let key in data.data) {
+              updateValidation = {
+                ...updateValidation,
+                [key]:data.data[key].join(',')
+              }
+            }
+          }else{
+            showToast('error', data.data);
+          }
+          
+         
+          if(Object.keys(updateValidation).length>0){
+            setValidation(updateValidation);
+          }
+        }else{
+          props.fetchUserList();
+          props.addFormHandler();
+          showToast('success', 'User Added Successfully');
+        }
+        console.log('data',data);
+      }catch(e){
+
+      }
+      
     }
+    console.log('validation',validation);
   return (
     <>
       <Modal show={isOpen} onHide={addFormHandler}>
@@ -103,6 +130,7 @@ const AddFormModal = (props) => {
                   <div className="form-group">
                     <label className="text-gray-900 text-md"> {field.label} </label>
                     <FormInputs {...field} changeHandler={changeHandler} />
+                    {isSet(validation[field.name],'')!=='' ? <span className="text-danger m-1">{isSet(validation[field.name],'')}</span> : ''}
                   </div>
                 </div>
               ))}
@@ -110,9 +138,9 @@ const AddFormModal = (props) => {
         </Modal.Body>
 
         <Modal.Footer className="d-flex justify-content-center">
-          <Button variant="primary" className="rounded-pill" onClick={()=>formSubmitHandler()}>
+          <button className="btn btn-primary rounded-pill" onClick={()=>formSubmitHandler()}>
             Submit
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
     </>

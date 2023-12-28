@@ -1,21 +1,30 @@
 import React, { Component } from "react";
-import { isSet } from "../../utils/commonUtils";
-import Selectlist from "../../components/UI/FormInputs/SelectList";
+import { isSet,capitalizeFirstLetter } from "../../utils/commonUtils";
+import FormInputs from "../../components/UI/FormInputs";
 import TableGrid from "../../components/UI/TableGrid";
 import UserAdd from './UserAdd';
-// import { AddFormModal } from "../DashboardContainer/AddFormModal";
 import RolesService from "../../services/RoleService";
 import UserService from "../../services/UserService";
+import { ToastContext  } from "../../context/ToaxtContext";
 
 class UserList extends Component {
+  
+  static contextType = ToastContext;
   constructor(props) {
     super(props);
     this.state = {
       roles: [],
+      rolesForFilter:[],
+      filters:{
+        role:'',
+        name:'',
+        email:'',
+        phone:'',
+      },
       isAddFormModelOpen: false,
       tableRecords: {
         tableHeaders:[
-          { label: '', key: 'isActive', type: 'checkBox', inputType: 'Checkbox' },
+          { label: '', key: 'isActive', type: 'checkBox'},
           { label: 'Role', key: 'role', type: ''},
           { label: 'First Name', key: 'firstName',inputType:'TextInput' },
           { label: 'Last Name', key: 'lastName',inputType:'TextInput' },
@@ -23,7 +32,7 @@ class UserList extends Component {
           { label: 'Email', key: 'email',inputType:'TextInput'},
           { label: 'Phone', key: 'phone'},
           { label: 'Active', key: 'active', inputType: 'Checkbox' },
-          { label: 'Action', key: 'action', type: 'Actions', dataType: '' },
+          { label: 'Action', key: 'action', type: 'Actions'},
         ],
         tableRows: {
           data: []
@@ -38,39 +47,21 @@ class UserList extends Component {
     this.fetchUserList();
     this.fetchRoles();
   }
-  onChange = (e) => {
-    console.log("onChange e");
-  };
-  editHandler = (rowId)=>{
-    this.setState({
-      activeEditId:rowId});
-    
-  }
-  setFormDataInEdit = (data)=>{
-    this.setState({formDataInEdit:data});
-  }
-  onChangeFormDataInEdit = (key,val)=>{
-    this.setState({
-      formDataInEdit:{
-        ...this.state.formDataInEdit,
-        [key]:val
-      }
-    })
-  }
-  updateHandler = ()=>{
-    const {formDataInEdit} = this.state;
-    console.log('formDataInEdit',formDataInEdit);
-  }
+  
   render() {
-    const {roles,tableRecords} = this.state;
+    const {roles,tableRecords,isAddFormModelOpen,rolesForFilter,filters} = this.state;
     return (
       <>
         <div>
-          <UserAdd
-            isOpen={this.state.isAddFormModelOpen}
-            addFormHandler={this.addFormHandler}
-            roles={roles}
-            modelTitle={"Add User"} />
+          {(isAddFormModelOpen)? 
+            <UserAdd
+              isOpen={this.state.isAddFormModelOpen}
+              addFormHandler={this.addFormHandler}
+              roles={roles}
+              fetchUserList={this.fetchUserList}
+              modelTitle={"Add User"} />
+          :<></>}
+          
           <div className="row h-100">
             <div className="col-md-12 overflow-auto h-100">
               <div className="card">
@@ -81,32 +72,46 @@ class UserList extends Component {
                         {/* ... your form fields */}
                         <div className="form-group-fields row">
                           <div className="col-md-2 px-1">
-                            <Selectlist
-                              options={roles}
-                              defaultValue=""
-                              changeHandler={this.onChange}
+                            <FormInputs
+                              fieldType="SelectList"
+                              options={rolesForFilter}
+                              value={filters['role']}
+                              changeHandler={(val)=>this.onChangeFiltersHandler('role',val)}
                             />
                           </div>
                           <div className="col-md-2 px-1">
-                            <input type="text" className="form-control" name="" placeholder="Name" />
+                            <FormInputs 
+                              placeholder="Name"
+                              value={filters["name"]}
+                              changeHandler={(val)=>this.onChangeFiltersHandler('name',val)}
+                              className="form-control"/>
                           </div>
                           <div className="col-md-2 px-1">
-                            <input type="text" className="form-control" name="" placeholder="Email"/>
+                          <FormInputs 
+                              placeholder="Email"
+                              value={filters["email"]}
+                              changeHandler={(val)=>this.onChangeFiltersHandler('email',val)}
+                              className="form-control"/>
                           </div>
                           <div className="col-md-2 px-2">
-                            <input type="text" className="form-control" name=""  placeholder="Phone"/>
+                            <FormInputs 
+                              fieldType='Phone'
+                              placeholder="Phone"
+                              value={filters["phone"]}
+                              changeHandler={(val)=>this.onChangeFiltersHandler('phone',val)}
+                              className="form-control"/>
                           </div>
-                          <button className="btn btn-primary rounded-pill mr-2">
+                          <button className="btn btn-primary rounded-pill mr-2" onClick={()=>this.submitFiltersHandler()}>
                             Search
                           </button>
-                          <button className="btn btn-outline-secondary rounded-pill">
+                          <button className="btn btn-outline-secondary rounded-pill" onClick={()=>this.clearFiltersHandler()}>
                             Clear
                           </button>
                         </div>
 
                         <div className="addAction">
                           <div className="btn-group ">
-                                  <button className="btn btn-primary" data-bs-toggle="modal"  onClick={this.addFormHandler} data-bs-target="#exampleModal"> Add </button>
+                                  <button className="btn btn-primary"  onClick={this.addFormHandler} > Add </button>
                                     
                                   <button className="btn btn-outline-secondary dropdown no-arrow" data-bs-toggle="dropdown"> 
                                     <span className=" dropdown-toggle ">
@@ -141,7 +146,6 @@ class UserList extends Component {
                         formDataInEdit:this.state.formDataInEdit,
                         activeEditId:this.state.activeEditId,
                         onChangeFormDataInEdit:this.onChangeFormDataInEdit,
-                        setFormDataInEdit:this.setFormDataInEdit,
                       }}
                        />
                   </div>
@@ -153,11 +157,86 @@ class UserList extends Component {
       </>
     );
   }
+  editHandler = (rowId,data)=>{
+    console.log('rowId,data',rowId,data);
+    this.setState({
+      activeEditId:rowId,
+      formDataInEdit:data
+    }); 
+  }
+  onChangeFiltersHandler =(key,val)=>{
+    const {filters} = this.state;
+    this.setState({
+      filters:{
+        ...filters,
+        [key]:val
+      }
+    })
+  }
+  onChangeFormDataInEdit = (key,val)=>{
+    this.setState({
+      formDataInEdit:{
+        ...this.state.formDataInEdit,
+        [key]:val
+      }
+    })
+  }
+  updateHandler = async (userId)=>{
+    const {formDataInEdit} = this.state;
+    const {firstName,lastName,email,dob,active} = formDataInEdit;
+    let payload = {
+      first_name:firstName,
+      last_name:lastName,
+      email:email,
+      dob:dob,
+      active_status:(active === true || isSet(active,'').toString().toLowerCase() === 'yes')?true:false
 
-  fetchUserList = async () => {
+    }
+
+    try{
+      const data = await UserService.updateUser(userId,payload);
+      const { showToast } = this.context;
+      
+      if(data.code===500){
+        showToast('error', isSet(data.data,'Something went wrong..'));
+      }else{
+        showToast('success', 'User updated successfully');
+        this.editHandler(null,{});
+      }
+      console.log('data',data);
+      
+    }catch(e){
+
+    }
+    this.fetchUserList();
+  }
+  submitFiltersHandler = ()=>{
+    const {filters}  =this.state;
+    const {name,role,email,phone} = filters;
+    const queryfilters = {
+      user_name:name,
+      role_name:role,
+      email:email,
+      phone:phone
+    }
+    this.fetchUserList(queryfilters)
+  }
+  clearFiltersHandler = async ()=>{
+    await this.setState({
+      filters:{
+        name:'',
+        role:'',
+        email:'',
+        phone:''
+      }
+    });
+    this.submitFiltersHandler();
+  }
+  fetchUserList = async (query='') => {
+    console.log('query',JSON.stringify(query));
     const {tableRecords} = this.state;
     try {
-      const users = await UserService.fetchUserList();
+      const users = await UserService.getUserList(query);
       let tableData = [];
       for (const role in users) {
         tableData = [...tableData];
@@ -179,15 +258,14 @@ class UserList extends Component {
                 className:'btn btn-datatable btn-icon btn-transparent-dark',
                 iconType:'Edit',
                 type:'GridEdit',
-                clickHandler:this.editHandler,
-                setFormDataInEdit:(data)=>this.setFormDataInEdit(data),
-                updateHandler:()=>this.updateHandler(),
+                clickHandler:(rowId,data)=>this.editHandler(rowId,data),
+                updateHandler:()=>this.updateHandler(user.id),
                 onChangeFormDataInEdit:(key,val)=>this.onChangeFormDataInEdit(key,val)
               },
               {
                 className:'btn btn-datatable btn-icon btn-transparent-dark',
                 iconType:'Remove',
-                clickHandler:()=>{}
+                clickHandler:()=>this.deleteHandler(user.id)
               }],
             }
             
@@ -197,12 +275,12 @@ class UserList extends Component {
           ...tableData,
           { 
             isHeading: true, 
-            rowId:role,
+            rowId: role,
             data: 
                 {   
                   isActive: false, 
                     'role': {
-                      value:role.replace(/_/g, ' '),
+                      value:capitalizeFirstLetter(role.replace(/_/g, ' ')),
                       attributes:{colspan: (tableRecords.tableHeaders.length) 
                       }, 
                     
@@ -212,7 +290,7 @@ class UserList extends Component {
           ...cells
         ]
       }
-      console.log('tableData',tableData);
+      // console.log('tableData',tableData);
       this.setState({ tableRecords: { ...tableRecords, tableRows: { type: 'tHeading', data: tableData } } });
     } catch (error) {
       console.error('Error fetching user list:', error);
@@ -225,16 +303,38 @@ class UserList extends Component {
       label:'-Roles-',
       value:''
     }];
+    let rolesForFilter = [{
+      label:'-Roles-',
+      value:''
+    }];
     rolesResponse.map((itm) => {
-      let obj = { label: itm.name.replace(/_/g, ' '), value: itm.id }
+      let obj = { label: itm.name.replace(/_/g, ' '), value: itm.id };
       roles.push(obj);
+
+      let objName = { label: itm.name.replace(/_/g, ' '), value: itm.name };
+      rolesForFilter.push(objName);
     });
-    this.setState({ roles });
+    this.setState({ roles,rolesForFilter });
   }
 
   addFormHandler = () => {
     this.setState({ isAddFormModelOpen: !this.state.isAddFormModelOpen });
   };
+  deleteHandler = async (userId)=>{
+    const { showToast } = this.context;
+    try{
+      const data = await UserService.deleteUser(userId);
+      if(data.code!==200 && data.code!==201){
+        showToast('error', isSet(data.data,'Something went wrong..'));
+      }else{
+        showToast('success', 'User Removed successfully');
+        this.fetchUserList();
+      }
+      console.log('userId',data);
+    }catch(e){
+
+    }
+  }
 }
 
 export default UserList;
