@@ -160,6 +160,7 @@ class RolesList extends Component {
                 roleIndex:roleIndex,
                 isHeading:false,
                 data:{
+                  isActive:roleIndex,
                     role:role.name,
                     description:'',
                     createdAt:role.created_at,

@@ -4,6 +4,7 @@ import RolesList from './RolesList';
 // import UserAdd from './UserAdd';
 // import UserDetailView from './UserDetailView';
 import Wrap from '../../hoc/Wrap';
+import { PermissionList } from './PermissionList';
 
 const RolesContainer = () => {
 
@@ -12,6 +13,8 @@ const RolesContainer = () => {
       {/* Other common elements in UserContainer */}
       <Routes>
         <Route path="/" key={0}  element={<RolesList />} />
+        <Route path="/permissions" key={1} element={<PermissionList/>}/>
+        {/* <Route path="/permission key={1}  element={<RolesList />} /> 
         {/* <Route path="/edit/:roleId" key={1}  element={<RolesList />} /> */}
         {/* <Route path="add" key={2} element={<UserAdd/>} />
         <Route path="detailview/:userId" key={3} element={<UserDetailView/>} /> */}

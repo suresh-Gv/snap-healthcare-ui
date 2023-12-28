@@ -3,8 +3,13 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import FormInputs from "../../components/UI/FormInputs";
 import UserService from "../../services/UserService";
+import { useLocation, useNavigate } from "react-router-dom";
+import RolesService from "../../services/RoleService";
 
 const AddRole = (props) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [formData,setFormData] = useState({
     role: '',
     description: '',
@@ -37,8 +42,11 @@ const AddRole = (props) => {
         });
     };
     const formSubmitHandler = () => {
-      console.log("FormData", formData);
-    //   UserService.saveUser(formData);
+    console.log("FormData", formData);
+      RolesService.saveRole(formData);
+      const currentUrl = location.pathname;
+    console.log("current URL", currentUrl);
+    navigate('permissions')
     }
   return (
     <>
