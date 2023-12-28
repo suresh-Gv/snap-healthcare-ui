@@ -7,7 +7,7 @@ const Actions = (props) => {
     const { rowId, value,gridEditProps } = props;
     const {activeEditId} = gridEditProps;
     let isEdit = false;
-
+    
     return (
         <td>
             <Wrap>
@@ -51,11 +51,11 @@ const EditGridButtonGroup = (props)=>{
     if(isSet(rowId,null)!==null && rowId===activeEditId){
         return(
             <Wrap>
-                <a className="btn btn-outline-secondary rounded-pill" onClick={()=>updateHandler(rowId)}>
-                        Update
+                <a className="btn btn-datatable btn-icon btn-transparent-dark mr-1" title={'Update'} onClick={()=>updateHandler(rowId)}>
+                    <Icons type={'Update'} />
                 </a>
-                <a className="btn btn-outline-secondary rounded-pill" onClick={()=>clickHandler(null,{})}>
-                        Cancel
+                <a className="btn btn-datatable btn-icon btn-transparent-dark "  title={'Cancel'} onClick={()=>clickHandler(null,{})}>
+                    <Icons type={'Cancel'} />
                 </a>
             </Wrap>
         )

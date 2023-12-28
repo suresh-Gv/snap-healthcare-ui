@@ -111,7 +111,7 @@ const AddFormModal = (props) => {
       }
       
     }
-    console.log('validation',validation);
+    // console.log('validation',validation);
   return (
     <>
       <Modal show={isOpen} onHide={addFormHandler}>

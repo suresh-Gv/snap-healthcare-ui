@@ -19,7 +19,6 @@ const TextInput = (props)=>{
   } = props;
 
     const onChangeHandler = (e)=>{
-      console.log('jj',e.target.value);
       changeHandler(e.target.value,e);       
     } 
     return(

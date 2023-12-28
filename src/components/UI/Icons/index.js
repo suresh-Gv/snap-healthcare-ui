@@ -10,6 +10,8 @@ import { ResultIcon } from "./ResultIcon";
 import { SettingsIcon } from "./SettingsIcon";
 import { EditIcon } from "./EditIcon";
 import { RemoveIcon } from "./RemoveIcon";
+import {UpdatetickIcon} from "./UpdatetickIcon";
+import CancelIcon from "./CancelIcon";
 
 const Icons = (props) => {
   const { type } = props;
@@ -34,8 +36,12 @@ const Icons = (props) => {
       return <SettingsIcon {...props} />;
     case "Edit":
       return <EditIcon {...props} />;
+    case "Cancel":
+      return <CancelIcon {...props} />;
     case "Remove":
-      return <RemoveIcon {...props} />;
+        return <RemoveIcon {...props} />;
+    case "Update":
+        return <UpdatetickIcon {...props} />;
     default:
       return <></>;
   }

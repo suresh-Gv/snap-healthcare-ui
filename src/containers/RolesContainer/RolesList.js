@@ -12,10 +12,10 @@ class RolesList extends Component {
     const tableHeaders =  [
         { label: '',key:'isActive',type:'checkBox'},
         { label: 'Role',key:'role',type:'',inputType:'TextInput'},
-        { label: 'Description',key:'description',inputType:'TextArea'},
+        // { label: 'Description',key:'description',inputType:'TextArea'},
         { label: 'Created At',key:'createdAt'},
         { label: 'Active',key:'active',inputType:'Checkbox'},
-        { label: 'Action',key:'action',type:'Actions',dataType:''},
+        { label: 'Action',key:'action',type:'Actions'},
         // Add more columns as needed
       ];
     this.state = {
@@ -141,31 +141,29 @@ class RolesList extends Component {
        const rolesList =  await RolesService.fetchRolesList();
         let tableData = [];
        rolesList.map((role,roleIndex)=>{
-        // tableData = [
-        //     ...tableData,
-        //     {   
-        //         roleIndex:roleIndex,
-        //         cells:[{
-        //             role:role.name,
-        //             description:'',
-        //             createdAt:role.created_at,
-        //             active:'Yes',
-        //             Actions:[]
-        //         }]
-        //     }
-        // ]
         tableData = [
             ...tableData,
             {   
                 roleIndex:roleIndex,
                 isHeading:false,
                 data:{
-                  isActive:roleIndex,
+                    isActive:roleIndex,
                     role:role.name,
-                    description:'',
+                    // description:'',
                     createdAt:role.created_at,
                     active:'Yes',
-                    Actions:[]
+                    action:[{
+                      className:'btn btn-datatable btn-icon btn-transparent-dark',
+                      iconType:'Edit',
+                      // type:'GridEdit',
+                      clickHandler:(rowId,data)=>{},//this.editHandler(rowId,data),
+                      // updateHandler:()=>this.updateHandler(user.id),
+                      // onChangeFormDataInEdit:(key,val)=>this.onChangeFormDataInEdit(key,val)
+                    },{
+                      className:'btn btn-datatable btn-icon btn-transparent-dark',
+                      iconType:'Remove',
+                      clickHandler:()=>{}
+                    }]
                 }
             }
         ]

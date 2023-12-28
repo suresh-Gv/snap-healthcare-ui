@@ -20,6 +20,7 @@ const PhoneNumber = (props) => {
       mask={phoneNumberFormat ? phoneNumberFormat : defaultPhoneNumberFormat}
       maskChar={defaultMaskChar}
       value={props.value}
+      placeHolder={props.placeholder}
       name={props.name ? props.name : ''}
       className={props.className ? props.className : ''}
       onChange={handlePhoneNumberChange}
@@ -32,6 +33,7 @@ PhoneNumber.defaultProps = {
   phoneNumberFormat: '',
   value: '',
   name: '',
+  placeholder:'',
   className: '',
 };
 
