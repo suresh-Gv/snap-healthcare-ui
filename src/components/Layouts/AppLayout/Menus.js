@@ -2,10 +2,16 @@ import React, {useRef } from "react";
 import Icons from "../../UI/Icons";
 import Buttons from "../../UI/Buttons";
 import Acl from "../../../hoc/Acl";
+import { useNavigate } from "react-router-dom"
 
 const Menus = (props) => {
   const {sideBarChangeHandler}=props;
   const menuRef = useRef(null);
+  const navigate = useNavigate();
+  const handleNavigation = (link) => {
+    //navigate to the desired route
+        navigate(link);
+      };
   return (
     <aside ref={menuRef}>
       <ul

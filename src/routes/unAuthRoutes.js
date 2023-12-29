@@ -1,5 +1,6 @@
 // routes.js
-import AuthContainer from '../containers/AuthContainer';
+
+import AuthContainer from "../containers/AuthContainer";
 
 const defaultConfig = {
   layoutType:'Default',
@@ -7,7 +8,7 @@ const defaultConfig = {
 }
 const PublicRoutes = [
     {
-        path: '/login',
+        path: '/login/*',
         // exact: true,
         element:AuthContainer,
         // element: <AuthContainer />,
