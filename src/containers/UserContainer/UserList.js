@@ -6,6 +6,7 @@ import UserAdd from './UserAdd';
 import RolesService from "../../services/RoleService";
 import UserService from "../../services/UserService";
 import { ToastContext  } from "../../context/ToaxtContext";
+import Buttons from "../../components/UI/Buttons";
 
 class UserList extends Component {
   
@@ -111,7 +112,13 @@ class UserList extends Component {
 
                         <div className="addAction">
                           <div className="btn-group ">
-                                  <button className="btn btn-primary"  onClick={this.addFormHandler} > Add </button>
+                          <Buttons
+                            onClick={this.addFormHandler}
+                            className="btn btn-primary" 
+                            acl={'user-create'}
+                            label={'Add'}
+                          />
+                                 
                                     
                                   <button className="btn btn-outline-secondary dropdown no-arrow" data-bs-toggle="dropdown"> 
                                     <span className=" dropdown-toggle ">
@@ -300,7 +307,7 @@ class UserList extends Component {
   };
 
   fetchRoles = async () => {
-    const rolesResponse = await RolesService.fetchRolesList();
+    const rolesResponse = await RolesService.getRolesList();
     let roles = [{
       label:'-Roles-',
       value:''

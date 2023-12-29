@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import { isObject,isSet } from "../../utils/commonUtils";
 import FormInputs from "../../components/UI/FormInputs";
-import UserService from "../../services/UserService";
 import { useLocation, useNavigate } from "react-router-dom";
 import RolesService from "../../services/RoleService";
+import { useToast } from '../../context/ToaxtContext';
+
 
 const AddRole = (props) => {
+  const { showToast } = useToast();
   const navigate = useNavigate();
   const location = useLocation();
+  const [validation,setValidation] = useState({});
 
   const [formData,setFormData] = useState({
-    role: '',
+    name: '',
     description: '',
   })
   const { isOpen, roles,addFormHandler, modelTitle } =props;
@@ -21,8 +25,8 @@ const AddRole = (props) => {
             label: "Role",
             placeholder: "Role",
             className: "form-control form-control-fields",
-            name: "role",
-            value:formData.role,
+            name: "name",
+            value:formData.name,
           },
           {
             fieldType: "TextArea",
@@ -41,12 +45,44 @@ const AddRole = (props) => {
           [fieldName]: val,
         });
     };
-    const formSubmitHandler = () => {
+    const formSubmitHandler = async () => {
     console.log("FormData", formData);
-      RolesService.saveRole(formData);
-      const currentUrl = location.pathname;
-    console.log("current URL", currentUrl);
-    navigate('permissions')
+    const payload = {
+      name:formData.name
+    }
+    let updateValidation = {...validation};
+    try{
+      const data = await RolesService.saveRole(payload);
+      // console.log('Roledata',data);
+      if(data.status && data.status=="ERROR"){
+        if(isObject(data.data)){
+          for (let key in data.data) {
+            updateValidation = {
+              ...updateValidation,
+              [key]:data.data[key].join(',')
+            }
+          }
+        }else{
+          showToast('error', data.data);
+        }
+        
+       
+        if(Object.keys(updateValidation).length>0){
+          setValidation(updateValidation);
+        }
+      }else{
+        // props.fetchUserList();
+        // props.addFormHandler();
+        navigate('permissions')
+        showToast('success', 'Role Added Successfully');
+      }
+    }catch(e){
+
+    }
+      
+      // const currentUrl = location.pathname;
+    // console.log("current URL", currentUrl);
+    
     }
   return (
     <>
@@ -66,6 +102,7 @@ const AddRole = (props) => {
                   <div className="form-group">
                     <label className="text-gray-900 text-md"> {field.label} </label>
                     <FormInputs {...field} changeHandler={changeHandler} />
+                    {isSet(validation[field.name],'')!=='' ? <span className="text-danger m-1">{isSet(validation[field.name],'')}</span> : ''}
                   </div>
                 </div>
               ))}

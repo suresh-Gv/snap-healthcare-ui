@@ -13,6 +13,9 @@ export const acl_check = (permissions, aclStrings) => {
   
     // return permissions?.[resource]?.[action] || false;
     const aclArray = Array.isArray(aclStrings) ? aclStrings : [aclStrings];
+    if(aclArray.indexOf('any')!==-1){
+        return true;
+    }
     return aclArray.some((aclString) => {
         const [resource, action] = aclString.split('-');
         return permissions?.[resource]?.[action];

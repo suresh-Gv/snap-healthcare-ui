@@ -1,5 +1,9 @@
+import FormInputs from "../../components/UI/FormInputs";
+import { capitalizeFirstLetter } from "../../utils/commonUtils";
+import { isSet } from "../../utils/commonUtils";
+
 export const Tables = (props) => {
-  console.log("Tables", props.permisssionBody);
+  const access = ['list','create','edit','delete'];
   return (
     <>
       <div className="card-body p-0">
@@ -30,7 +34,7 @@ export const Tables = (props) => {
                     aria-expanded="false"
                     className="collapsed"
                   >
-                    labAdmin
+                    User & Roles
                   </a>
                 </td>
               </tr>
@@ -50,49 +54,39 @@ export const Tables = (props) => {
                       </tr>
                     </thead>
                     <tbody>
-                    {/* {props.permisssionBody.map((itm,index)=>{
-                       return Object.entries(itm).map(([key, value]) => {
+                      {props.permissonBody.map((item,itemIndex)=>{
                         return(
-                          <tr key={index}>
-                            <td>{key}</td>
-                            {Object.entries(value).map(([ky, val]) => {
-                            return(
-                              <td key={ky}>
+                          <tr key={itemIndex}>
+                            <td>{capitalizeFirstLetter(item.label)}</td>
+                            {access.map((itm,itmIndex)=>{
+                              const value = item.data[itm];
+                              return(
+                                <td key={`key${itmIndex}_${itemIndex}`}>
                                 <div className="form-check">
-                                  <input
-                                    className="form-check-input"
-                                    id={`checkAccountChanges_${index}_${ky}`}
-                                    type="checkbox"
-                                    // checked={}
-                                  />
-                                </div>
-                            </td>
-                            )
-                          })}
+                                    <FormInputs 
+                                        className="form-check-input"
+                                        id={`checkbox_${itmIndex}_${itemIndex}`}
+                                        fieldType="Checkbox"
+                                        name={item.label}
+                                        value={(isSet(props.permissons,[]).indexOf(value)!==-1)?true:false}
+                                        changeHandler={(bool)=>{
+                                          if (bool===true) {
+                                            // Add the value to the permissions array
+                                            props.setPermissions([...props.permissons, value]);
+                                          } else {
+                                            // Remove the value from the permissions array
+                                            props.setPermissions(props.permissons.filter((item) => item !== value));
+                                          }
+                                          }}/>
+                                     
+                                    </div>
+                                  </td>
+                              )
+                            })}
+                            
                           </tr>
                         )
-                       })
-                      
-                    })} */}
-                      {props.permisssionBody.map((itm, index) => (
-                        <tr key={index}>
-                          <td>{Object.keys(itm)}</td>
-                          {Object.values(itm).map((permissions, innerIndex) =>
-                            permissions.map((permission, nestedIndex) => (
-                              <td key={nestedIndex}>
-                                <div className="form-check">
-                                  <input
-                                    className="form-check-input"
-                                    id={`checkAccountChanges_${index}_${nestedIndex}`}
-                                    type="checkbox"
-                                    checked={Object.values(permission)[0]}
-                                  />
-                                </div>
-                              </td>
-                            ))
-                          )}
-                        </tr>
-                      ))}
+                      })}
                     </tbody>
                   </table>
                 </td>

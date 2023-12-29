@@ -6,7 +6,7 @@ import http from './http';
 
 const UserService = {
   //GET PROFILE
-  fetchProfile: async () => {
+  getUserProfile: async () => {
       try {
         
         const response = await http.GET(`user_profile`);
@@ -32,7 +32,7 @@ const UserService = {
         if(response.status===200 && response.data){
           const resData = response.data;
           if(resData.code===200 && resData.data){
-            UserService.storeProfile(resData.data);
+            // UserService.storeProfile(resData.data);
             // console.log('resData.data',resData.data);
             return resData.data;
           }

@@ -64,31 +64,4 @@ const EditGridButtonGroup = (props)=>{
         return  <Button className={className} iconType={iconType} acl={acl} clickHandler={()=>clickHandler(rowId,getFromData())}/>;
     }
 }
-// const Button = ({ label, iconType, className, clickHandler, hasAccess,title }) => {
-    
-//   const buttonStyle = {
-//     cursor: isSet(hasAccess,true) ? 'auto' : 'not-allowed', // Enable or disable pointer events pointerEvents
-//     opacity: isSet(hasAccess,true) ? 1 : 0.5, // Adjust opacity based on access
-//   };
-//     return (
-//       <a
-//         className={className}
-//         onClick={(isSet(hasAccess,true))?clickHandler:()=>{}}
-//         title={!isSet(hasAccess,true) ? 'No permission' : isSet(title,'')} // Add title if no permission
-//         style={buttonStyle}
-//       >
-//         <Icons type={iconType} />
-//         {label}
-//       </a>
-//     );
-//   };
-// const Button = ({ label, iconType, className,clickHandler,hasAccess }) =>{
-//     return(
-//         <a className={className} onClick={clickHandler} >
-//         <Icons type={iconType} />
-//         {label}
-//         </a>
-//     )
-// }
-
 export default Actions;

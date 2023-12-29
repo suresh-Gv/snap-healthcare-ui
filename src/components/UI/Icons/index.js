@@ -12,6 +12,7 @@ import { EditIcon } from "./EditIcon";
 import { RemoveIcon } from "./RemoveIcon";
 import {UpdatetickIcon} from "./UpdatetickIcon";
 import CancelIcon from "./CancelIcon";
+import Permission from "./PermissionIcon";
 
 const Icons = (props) => {
   const { type } = props;
@@ -42,6 +43,8 @@ const Icons = (props) => {
         return <RemoveIcon {...props} />;
     case "Update":
         return <UpdatetickIcon {...props} />;
+        case "Permission":
+          return <Permission {...props} />;
     default:
       return <></>;
   }

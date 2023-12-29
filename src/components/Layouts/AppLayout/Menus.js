@@ -1,29 +1,11 @@
 import React, {useRef } from "react";
 import Icons from "../../UI/Icons";
 import Buttons from "../../UI/Buttons";
+import Acl from "../../../hoc/Acl";
 
 const Menus = (props) => {
   const {sideBarChangeHandler}=props;
-  // const [isSidebarShown, setSidebarShown] = useState(false);
   const menuRef = useRef(null);
-
-  /*------- outside Onclick for hide Setting Menu -----------*/
-  // useEffect(() => {
-  //   const handleOutsideClick = (e) => {
-  //     if (menuRef.current && !menuRef.current.contains(e.target) && isSidebarShown) {
-  //       setSidebarShown(false);
-  //     }
-  //   };
-
-  //   document.addEventListener('mouseup', handleOutsideClick);
-
-  //   return () => {
-  //     document.removeEventListener('mouseup', handleOutsideClick);
-  //   };
-  // }, [isSidebarShown]);
-  // useEffect(()=>{
-  //   sideBarChangeHandler(false);
-  // },[isSidebarShown]);
   return (
     <aside ref={menuRef}>
       <ul
@@ -44,14 +26,17 @@ const Menus = (props) => {
         </a>
         {props.MenusData.map((menu, index) => {
           return (
-            <li className="nav-item" key={index}>
-              <a className="nav-link" href={menu.link}>
-                <span className="sh_menuIcon">
-                  <Icons type={menu.iconType} />
-                </span>
-                <span className="text-gray-600">{menu.title}</span>
-              </a>
-            </li>
+            <Acl acl={menu.acl}>
+              <li className="nav-item" key={index}>
+                <Buttons className="nav-link" href={menu.link} acl={'any'}>
+                    <span className="sh_menuIcon">
+                      <Icons type={menu.iconType} />
+                    </span>
+                    <span className="text-gray-600">{menu.title}</span>
+                
+                </Buttons>
+              </li>
+            </Acl>
           );
         })}
         <li className="nav-item">
@@ -70,7 +55,13 @@ const Menus = (props) => {
       <div className="side_Inner">
         <div className="nav-link">
           {props.Configures.map((item, index) => (
-            <Buttons acl={item.acl} href={item.link} className="side_InnerText" key={index} label={item.Title}/>
+            <Buttons 
+              acl={item.acl}
+              accessType={'Hide'} 
+              href={item.link} 
+              className="side_InnerText" 
+              key={index} 
+              label={item.Title}/>
             
           ))}
         </div>

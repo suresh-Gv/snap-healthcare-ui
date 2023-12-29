@@ -13,6 +13,7 @@ const PublicRoutes = [
       path: '/',
       exact: true,
       element: Dashboard,
+      acl:['any'],
       ...defaultConfig
       // Add more properties as needed
     },
@@ -20,6 +21,7 @@ const PublicRoutes = [
       path: '/unauthorized',
       exact: true,
       element: Unauthorized,
+      acl:['any'],
       ...defaultConfig
       // Add more properties as needed
     },
@@ -27,7 +29,8 @@ const PublicRoutes = [
         path: '/dashboard',
         exact: true,
         element:Dashboard,
-        ...defaultConfig
+        ...defaultConfig,
+        acl:['any'],
         // Add more properties as needed
       },
       {

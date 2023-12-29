@@ -10,10 +10,11 @@ const CheckboxInput = (props) => {
     style,
     name,
     changeHandler,
+    id
   } = props;
 
   const onChangeHandler = (e) => {
-    // console.log('e',e.target.checked);
+    console.log('e',e.target.checked);
     changeHandler(e.target.checked, e);
   };
   let isChecked = (value === true || isSet(value,'').toString().toLowerCase() === 'yes')?true:false;
@@ -26,6 +27,7 @@ const CheckboxInput = (props) => {
           checked={isChecked}
           style={style}
           name={name}
+          id={id}
           onChange={(e) => onChangeHandler(e)}
         />
         {label}
@@ -40,6 +42,7 @@ CheckboxInput.defaultProps = {
   value: false,
   name:'default',
   style: {},
+  id:0,
   onChangeHandler:()=>{}
 };
 

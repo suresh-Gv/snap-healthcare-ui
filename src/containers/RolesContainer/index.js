@@ -13,7 +13,7 @@ const RolesContainer = () => {
       {/* Other common elements in UserContainer */}
       <Routes>
         <Route path="/" key={0}  element={<RolesList />} />
-        <Route path="/permissions" key={1} element={<PermissionList/>}/>
+        <Route path="/permissions/:roleId" key={1} element={<PermissionList/>}/>
         {/* <Route path="/permission key={1}  element={<RolesList />} /> 
         {/* <Route path="/edit/:roleId" key={1}  element={<RolesList />} /> */}
         {/* <Route path="add" key={2} element={<UserAdd/>} />

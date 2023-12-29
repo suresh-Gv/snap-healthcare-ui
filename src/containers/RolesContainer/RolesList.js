@@ -2,10 +2,17 @@ import React, { Component } from 'react';
 import RolesService from '../../services/RoleService';
 import TableGrid from '../../components/UI/TableGrid';
 import AddRole from './AddRole';
+import { ToastContext  } from "../../context/ToaxtContext";
+import FormInputs from '../../components/UI/FormInputs';
+import moment from 'moment';
+import { capitalizeFirstLetter, isSet } from '../../utils/commonUtils';
+import Buttons from '../../components/UI/Buttons';
+
 // import { AddFormModal } from '../DashboardContainer/AddFormModal';
 
 
 class RolesList extends Component {
+  static contextType = ToastContext;
   constructor(props) {
     super(props);
     // Initialize state or bind methods if needed
@@ -14,17 +21,22 @@ class RolesList extends Component {
         { label: 'Role',key:'role',type:'',inputType:'TextInput'},
         // { label: 'Description',key:'description',inputType:'TextArea'},
         { label: 'Created At',key:'createdAt'},
-        { label: 'Active',key:'active',inputType:'Checkbox'},
+        { label: 'Active',key:'active'},
         { label: 'Action',key:'action',type:'Actions'},
         // Add more columns as needed
       ];
     this.state = {
+      filters:{
+        role:''
+      },
         tableRecords:{
             tableHeaders:tableHeaders,
             tableRows:{
                 data:[]
             },
         },
+        formDataInEdit:{},
+        activeEditId:null,
       // Your state variables go here
       isModelOpen:false,
   }
@@ -52,9 +64,17 @@ class RolesList extends Component {
     this.setState({isModelOpen:!this.state.isModelOpen})
   }
 
-  
+  onChangeFiltersHandler =(key,val)=>{
+    const {filters} = this.state;
+    this.setState({
+      filters:{
+        ...filters,
+        [key]:val
+      }
+    })
+  }
   render() {
-    const {tableRecords} = this.state;
+    const {tableRecords,filters} = this.state;
    
     return (
       <>
@@ -72,30 +92,28 @@ class RolesList extends Component {
                   <div className="col-12">
                     <div className="form-group d-flex mb-0 justify-content-between">
                       <div className="form-group-fields row">
-                        <div className="col-md-2 px-1">
-                          <input type="text" className="form-control" name="" />
-                        </div>
-                        <div className="col-md-2 px-1">
-                          <input type="text" className="form-control" name="" />
-                        </div>
-                        <div className="col-md-2 px-2">
-                          <input type="text" className="form-control" name="" />
-                        </div>
-                        <button className="btn btn-primary rounded-pill mr-2">
-                          Search
-                        </button>
-                        <button className="btn btn-outline-secondary rounded-pill">
-                          Clear
-                        </button>
+                      <div className="col-md-4 px-1">
+                            <FormInputs 
+                              placeholder="Role"
+                              value={filters["name"]}
+                              changeHandler={(val)=>this.onChangeFiltersHandler('name',val)}
+                              className="form-control"/>
+                          </div>
+                          <button className="btn btn-primary rounded-pill mr-2" onClick={()=>this.submitFiltersHandler()}>
+                            Search
+                          </button>
+                          <button className="btn btn-outline-secondary rounded-pill" onClick={()=>this.clearFiltersHandler()}>
+                            Clear
+                          </button>
                       </div>
                       <div className="addAction">
                         <div className="btn-group">
-                          <button
+                          <Buttons
                             onClick={this.addFormHandler}
-                            className="btn btn-primary"
-                          >
-                            Add
-                          </button>
+                            className="btn btn-primary" 
+                            acl={'role-create'}
+                            label={'Add'}
+                          />
                           <button
                             className="btn btn-outline-secondary dropdown no-arrow"
                             data-bs-toggle="dropdown"
@@ -126,7 +144,12 @@ class RolesList extends Component {
 
               <div className="card-body">
                 <div className="datatable-container dataTable">
-                  <TableGrid {...tableRecords} />
+                  <TableGrid 
+                      {...tableRecords} gridEditProps={{
+                        formDataInEdit:this.state.formDataInEdit,
+                        activeEditId:this.state.activeEditId,
+                        onChangeFormDataInEdit:this.onChangeFormDataInEdit,
+                      }}/>
                 </div>
               </div>
             </div>
@@ -136,32 +159,63 @@ class RolesList extends Component {
       </>
     );
   }
-  fetchRolesList =async ()=>{
+  submitFiltersHandler = ()=>{
+    const {filters}  =this.state;
+    const {name} = filters;
+    const queryfilters = {
+      name:name,
+    }
+    this.fetchRolesList(queryfilters)
+  }
+  clearFiltersHandler = async ()=>{
+    await this.setState({
+      filters:{
+        name:'',
+      }
+    });
+    this.submitFiltersHandler();
+  }
+  fetchRolesList =async (query)=>{
     try{
-       const rolesList =  await RolesService.fetchRolesList();
+       const rolesList =  await RolesService.getRolesList(query);
         let tableData = [];
        rolesList.map((role,roleIndex)=>{
+        const usDateTimeString = moment.utc(role.created_at).format('MMMM D, YYYY h:mm:ss A');
+
+
         tableData = [
             ...tableData,
             {   
                 roleIndex:roleIndex,
                 isHeading:false,
+                rowId:role.id,
                 data:{
                     isActive:roleIndex,
-                    role:role.name,
-                    // description:'',
-                    createdAt:role.created_at,
+                    role:capitalizeFirstLetter(role.name),
+                    createdAt:usDateTimeString,//role.created_at,
                     active:'Yes',
                     action:[{
                       className:'btn btn-datatable btn-icon btn-transparent-dark',
                       iconType:'Edit',
-                      // type:'GridEdit',
-                      clickHandler:(rowId,data)=>{},//this.editHandler(rowId,data),
-                      // updateHandler:()=>this.updateHandler(user.id),
-                      // onChangeFormDataInEdit:(key,val)=>this.onChangeFormDataInEdit(key,val)
-                    },{
+                      title:'Edit',
+                      type:'GridEdit',
+                      acl:'role-edit',
+                      clickHandler:(rowId,data)=>this.editHandler(rowId,data),
+                      updateHandler:()=>this.updateHandler(role.id),
+                      onChangeFormDataInEdit:(key,val)=>this.onChangeFormDataInEdit(key,val)
+                    },{ 
                       className:'btn btn-datatable btn-icon btn-transparent-dark',
                       iconType:'Remove',
+                      acl:'role-delete',
+                      title:'Delete',
+                      clickHandler:()=>{}
+                    },
+                    { 
+                      className:'btn btn-datatable btn-icon btn-transparent-dark',
+                      iconType:'Permission',
+                      title:'Role Permission',
+                      href:`/roles/permissions/${btoa(role.id+'##'+role.name)}`,
+                      acl:'role-edit',
                       clickHandler:()=>{}
                     }]
                 }
@@ -177,10 +231,57 @@ class RolesList extends Component {
             }
         }
        })
-       console.log('rolesList',tableData);
     }catch(e){
 
     }
+  }
+  editHandler = (rowId,data)=>{
+    this.setState({
+      activeEditId:rowId,
+      formDataInEdit:data
+    }); 
+  }
+  onChangeFiltersHandler =(key,val)=>{
+    const {filters} = this.state;
+    this.setState({
+      filters:{
+        ...filters,
+        [key]:val
+      }
+    })
+  }
+  onChangeFormDataInEdit = (key,val)=>{
+    this.setState({
+      formDataInEdit:{
+        ...this.state.formDataInEdit,
+        [key]:val
+      }
+    })
+  }
+  updateHandler = async (roleId)=>{
+    const {formDataInEdit} = this.state;
+    console.log('formDataInEdit',formDataInEdit,roleId);
+    const {role} = formDataInEdit;
+    let payload = {
+      name:role,
+    }
+
+    try{
+      const data = await RolesService.updateRolePermission(roleId,payload);
+      const { showToast } = this.context;
+      
+      if(data.code===500){
+        showToast('error', isSet(data.data,'Something went wrong..'));
+      }else{
+        showToast('success', 'User updated successfully');
+        this.editHandler(null,{});
+      }
+      console.log('data',data);
+      
+    }catch(e){
+
+    }
+    this.fetchRolesList();
   }
 }
 

@@ -6,15 +6,23 @@ const Unauthorized = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate(-1); // Navigate back to the previous page in the history
+    if (window.history.length > 1) {
+      navigate(-1); // Navigate back in history if available
+    } else {
+      navigate('/dashboard'); // Redirect to the dashboard screen if no history
+    }
   };
 
   return (
-    <div>
-      <h1>Unauthorized</h1>
-      <p>You don't have permission to access this page.</p>
-      <button onClick={handleGoBack}>Go Back</button>
-      {/* You can add more content or styling as needed */}
+    <div className="error-middle">
+      <h1>Error 401 - Unauthorized</h1>
+      <p>
+        The 401 (Unauthorized) status code indicates that the request has not been applied because it
+        lacks valid authentication credentials for the target resource.
+      </p>
+      <button className="btn btn-outline-secondary rounded-pill" onClick={handleGoBack}>
+        Go Back
+      </button>
     </div>
   );
 };
