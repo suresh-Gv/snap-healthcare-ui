@@ -36,7 +36,8 @@ const LoginForm = () => {
       }
       const isAuthenticated = AuthService.isAuthenticated();
       if (isAuthenticated === true) {
-        const profileData = await UserService.fetchProfile();
+        alert('Please');
+        const profileData = await UserService.getUserProfile();
         dispatch(setProfileDetails(profileData));
         navigate("/dashboard");
       }

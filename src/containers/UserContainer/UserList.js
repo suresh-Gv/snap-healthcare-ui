@@ -113,7 +113,7 @@ class UserList extends Component {
                         <div className="addAction">
                           <div className="btn-group ">
                           <Buttons
-                            onClick={this.addFormHandler}
+                            clickHandler={this.addFormHandler}
                             className="btn btn-primary" 
                             acl={'user-create'}
                             label={'Add'}
