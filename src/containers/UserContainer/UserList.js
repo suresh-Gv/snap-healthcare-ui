@@ -258,6 +258,7 @@ class UserList extends Component {
                 className:'btn btn-datatable btn-icon btn-transparent-dark',
                 iconType:'Edit',
                 type:'GridEdit',
+                acl:'user-edit',
                 clickHandler:(rowId,data)=>this.editHandler(rowId,data),
                 updateHandler:()=>this.updateHandler(user.id),
                 onChangeFormDataInEdit:(key,val)=>this.onChangeFormDataInEdit(key,val)
@@ -265,6 +266,7 @@ class UserList extends Component {
               {
                 className:'btn btn-datatable btn-icon btn-transparent-dark',
                 iconType:'Remove',
+                acl:'user-delete',
                 clickHandler:()=>this.deleteHandler(user.id)
               }],
             }

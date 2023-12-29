@@ -45,7 +45,7 @@
       },
     ];
     const Configures = [
-      { Title: "Users", link: "/users" },
+      { Title: "Users", link: "/users",acl:'user-list' },
       { Title: "Roles & Permission", link: "/roles" },
       { Title: "Company Divisions", link: "#" },
       { Title: "Clinic Locations", link: "#" },

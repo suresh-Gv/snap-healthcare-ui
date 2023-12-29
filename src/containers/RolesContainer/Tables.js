@@ -50,6 +50,30 @@ export const Tables = (props) => {
                       </tr>
                     </thead>
                     <tbody>
+                    {/* {props.permisssionBody.map((itm,index)=>{
+                       return Object.entries(itm).map(([key, value]) => {
+                        return(
+                          <tr key={index}>
+                            <td>{key}</td>
+                            {Object.entries(value).map(([ky, val]) => {
+                            return(
+                              <td key={ky}>
+                                <div className="form-check">
+                                  <input
+                                    className="form-check-input"
+                                    id={`checkAccountChanges_${index}_${ky}`}
+                                    type="checkbox"
+                                    // checked={}
+                                  />
+                                </div>
+                            </td>
+                            )
+                          })}
+                          </tr>
+                        )
+                       })
+                      
+                    })} */}
                       {props.permisssionBody.map((itm, index) => (
                         <tr key={index}>
                           <td>{Object.keys(itm)}</td>

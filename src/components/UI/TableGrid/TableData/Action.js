@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Wrap from "../../../../hoc/Wrap";
 import { isSet } from "../../../../utils/commonUtils";
 import Icons from '../../Icons';
+import Button from '../../Buttons';
 
 const Actions = (props) => {
     const { rowId, value,gridEditProps } = props;
@@ -35,7 +36,7 @@ const Actions = (props) => {
     );
 };
 const EditGridButtonGroup = (props)=>{
-    const {gridEditProps,rowId,clickHandler,className,iconType,updateHandler} = props;
+    const {gridEditProps,rowId,clickHandler,className,iconType,updateHandler,acl} = props;
     const {activeEditId,tableHeaders,rowData} = gridEditProps;
 
     const getFromData = () => {
@@ -60,14 +61,34 @@ const EditGridButtonGroup = (props)=>{
             </Wrap>
         )
     }else{  
-        return  <Button className={className} iconType={iconType} clickHandler={()=>clickHandler(rowId,getFromData())}/>;
+        return  <Button className={className} iconType={iconType} acl={acl} clickHandler={()=>clickHandler(rowId,getFromData())}/>;
     }
 }
-const Button = ({ label, iconType, className,clickHandler }) => (
-    <button className={className} onClick={clickHandler}>
-      <Icons type={iconType} />
-      {label}
-    </button>
-  );
+// const Button = ({ label, iconType, className, clickHandler, hasAccess,title }) => {
+    
+//   const buttonStyle = {
+//     cursor: isSet(hasAccess,true) ? 'auto' : 'not-allowed', // Enable or disable pointer events pointerEvents
+//     opacity: isSet(hasAccess,true) ? 1 : 0.5, // Adjust opacity based on access
+//   };
+//     return (
+//       <a
+//         className={className}
+//         onClick={(isSet(hasAccess,true))?clickHandler:()=>{}}
+//         title={!isSet(hasAccess,true) ? 'No permission' : isSet(title,'')} // Add title if no permission
+//         style={buttonStyle}
+//       >
+//         <Icons type={iconType} />
+//         {label}
+//       </a>
+//     );
+//   };
+// const Button = ({ label, iconType, className,clickHandler,hasAccess }) =>{
+//     return(
+//         <a className={className} onClick={clickHandler} >
+//         <Icons type={iconType} />
+//         {label}
+//         </a>
+//     )
+// }
 
 export default Actions;

@@ -1,5 +1,6 @@
 import React, {useRef } from "react";
 import Icons from "../../UI/Icons";
+import Buttons from "../../UI/Buttons";
 
 const Menus = (props) => {
   const {sideBarChangeHandler}=props;
@@ -69,9 +70,8 @@ const Menus = (props) => {
       <div className="side_Inner">
         <div className="nav-link">
           {props.Configures.map((item, index) => (
-            <a href={item.link} className="side_InnerText" key={index}>
-              {item.Title}
-            </a>
+            <Buttons acl={item.acl} href={item.link} className="side_InnerText" key={index} label={item.Title}/>
+            
           ))}
         </div>
       </div>
