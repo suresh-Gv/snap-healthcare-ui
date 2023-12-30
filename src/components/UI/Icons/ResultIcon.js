@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ResultIcon = ({size}) => {
+const ResultIcon = ({size}) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width={size} height={size} viewBox="0 0 42.921 44.725">
       <defs>
@@ -34,3 +34,5 @@ export const ResultIcon = ({size}) => {
 ResultIcon.defaultProps = {
   size: 24
 };
+
+export default ResultIcon;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const EditIcon = ({ width = 18, height = 18, color = '#0061f2', ...props }) => (
+const  EditIcon = ({ width = 18, height = 18, color = '#0061f2', ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}
@@ -16,3 +16,5 @@ export const EditIcon = ({ width = 18, height = 18, color = '#0061f2', ...props 
     ></path>
   </svg>
 );
+
+export default EditIcon;

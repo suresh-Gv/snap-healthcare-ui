@@ -35,8 +35,8 @@
       },
       {
         title: "Labs",
-        link: "#",
-        acl:['labs-list'],
+        link: "/labs",
+        acl:['lab-list'],
         iconType: "Labs",
       },
       {
@@ -55,7 +55,7 @@
     const Configures = [
       { Title: "Users", link: "/users",acl:'user-list' },
       { Title: "Roles & Permission", link: "/roles",acl:'role-list' },
-      { Title: "Clinics & Providers", link: "#",acl:'any' },
+      { Title: "Clinics & Providers", link: "/clinics",acl:'clinic-list' },
       // { Title: "Company Divisions", link: "#" },
       // { Title: "Clinic Locations", link: "#" },
       // { Title: "Vaccine Administration", link: "#" },

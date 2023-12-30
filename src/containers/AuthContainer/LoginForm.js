@@ -35,9 +35,10 @@ const LoginForm = () => {
         setValidation(isSet(userData.data.error,'Authentication failed')+'  The information you have provided cannot be authenticated. Check your login information and try again');
       }
       const isAuthenticated = AuthService.isAuthenticated();
+      console.log('isAuthenticated',isAuthenticated);
       if (isAuthenticated === true) {
-        alert('Please');
         const profileData = await UserService.getUserProfile();
+        console.log('profileData',profileData);
         dispatch(setProfileDetails(profileData));
         navigate("/dashboard");
       }

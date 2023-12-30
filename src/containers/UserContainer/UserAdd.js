@@ -117,9 +117,9 @@ const AddFormModal = (props) => {
       <Modal show={isOpen} onHide={addFormHandler}>
         <Modal.Header closeButton>
           <Modal.Title>
-            <h5 className="modal-title text-gray-900" id="exampleModalLabel">
+            <h6 className="modal-title text-gray-900">
               {modelTitle}
-            </h5>
+            </h6>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

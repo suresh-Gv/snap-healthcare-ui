@@ -1,6 +1,6 @@
 import React from 'react';
-export const CompaniesIcon = (props) => {
-  console.log('compannie icon size',props.size);
+const CompaniesIcon = (props) => {
+  // console.log('compannie icon size',props.size);
     return (
       <>
         <svg
@@ -41,4 +41,6 @@ export const CompaniesIcon = (props) => {
   CompaniesIcon.defaultProps ={
     size:24
 }
+
+export default CompaniesIcon;
   

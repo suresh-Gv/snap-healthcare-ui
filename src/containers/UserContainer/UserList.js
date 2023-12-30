@@ -331,18 +331,22 @@ class UserList extends Component {
   };
   deleteHandler = async (userId)=>{
     const { showToast } = this.context;
-    try{
-      const data = await UserService.deleteUser(userId);
-      if(data.code!==200 && data.code!==201){
-        showToast('error', isSet(data.data,'Something went wrong..'));
-      }else{
-        showToast('success', 'User Removed successfully');
-        this.fetchUserList();
+    const userConfirmed = window.confirm('Are you sure you want to delete?');
+    if(userConfirmed){
+      try{
+        const data = await UserService.deleteUser(userId);
+        if(data.code!==200 && data.code!==201){
+          showToast('error', isSet(data.data,'Something went wrong..'));
+        }else{
+          showToast('success', 'User Removed successfully');
+          this.fetchUserList();
+        }
+        console.log('userId',data);
+      }catch(e){
+  
       }
-      console.log('userId',data);
-    }catch(e){
-
     }
+    
   }
 }
 

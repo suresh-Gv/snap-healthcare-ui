@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PatientChatIcon = ({size}) => {
+const PatientChatIcon = ({size}) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width={size} height={size} viewBox="0 0 196.204 190.44">
       <defs>
@@ -32,3 +32,4 @@ export const PatientChatIcon = ({size}) => {
 PatientChatIcon.defaultProps = {
   size:24 
 };
+export default PatientChatIcon

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const WhiteboardIcon = () => {
+const WhiteboardIcon = () => {
   return (
     <span className="sh_menuIcon">
       <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 191.598 194.31">
@@ -27,3 +27,5 @@ export const WhiteboardIcon = () => {
 WhiteboardIcon.defaultProps = {
     size: 24
 };
+
+export default WhiteboardIcon;

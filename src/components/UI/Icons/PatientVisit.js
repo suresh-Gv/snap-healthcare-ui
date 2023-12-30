@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PatientVisitIcon = ({size}) => {
+const PatientVisitIcon = ({size}) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width={size} height={size} viewBox="0 0 41.137 51.172">
       <defs>
@@ -25,3 +25,5 @@ export const PatientVisitIcon = ({size}) => {
 PatientVisitIcon.defaultProps = {
   size: 24
 };
+
+export default PatientVisitIcon;

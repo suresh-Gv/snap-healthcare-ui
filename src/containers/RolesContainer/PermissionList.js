@@ -99,7 +99,7 @@ export const PermissionList = () => {
     <>
       
         <div className="row h-100">
-          <div className="col-md-12 overflow-auto h-100">
+          <div className="col-md-12 overflow-auto1 h-100">
             <div className="card">
               <div className="card-header">
                 <div className="row">

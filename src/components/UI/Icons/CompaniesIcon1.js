@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const CompaniesIcon = ({size}) => {	
+export default CompaniesIcon = ({size}) => {	
 	return (
 		<svg  xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 46.701 50.625">
             <defs>

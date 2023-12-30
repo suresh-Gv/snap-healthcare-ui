@@ -3,27 +3,27 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { isObject,isSet } from "../../utils/commonUtils";
 import FormInputs from "../../components/UI/FormInputs";
-import { useLocation, useNavigate } from "react-router-dom";
-import RolesService from "../../services/RoleService";
+// import { useLocation, useNavigate } from "react-router-dom";
+import LabService from "../../services/LabService";
 import { useToast } from '../../context/ToaxtContext';
 
 
-const AddRole = (props) => {
+const AddLab = (props) => {
   const { showToast } = useToast();
-  const navigate = useNavigate();
-  const location = useLocation();
+//   const navigate = useNavigate();
+//   const location = useLocation();
   const [validation,setValidation] = useState({});
 
   const [formData,setFormData] = useState({
     name: '',
     description: '',
   })
-  const { isOpen, roles,addFormHandler, modelTitle } =props;
+  const { isOpen,addFormHandler, modelTitle } =props;
     const inputFields = [
         {
             fieldType: "TextInput",
-            label: "Role",
-            placeholder: "Role",
+            label: "Lab",
+            placeholder: "Lab Name",
             className: "form-control form-control-fields",
             name: "name",
             value:formData.name,
@@ -46,13 +46,13 @@ const AddRole = (props) => {
         });
     };
     const formSubmitHandler = async () => {
-    console.log("FormData", formData);
     const payload = {
-      name:formData.name
+      name:formData.name,
+      description:formData.description
     }
     let updateValidation = {...validation};
     try{
-      const data = await RolesService.saveRole(payload);
+      const data = await LabService.saveLabs(payload);
       // console.log('Roledata',data);
       if(data.status && data.status=="ERROR"){
         if(isObject(data.data)){
@@ -71,10 +71,9 @@ const AddRole = (props) => {
           setValidation(updateValidation);
         }
       }else{
-        // props.fetchUserList();
-        // props.addFormHandler();
-        navigate('permissions')
-        showToast('success', 'Role Added Successfully');
+        props.fetchLabsList();
+        props.addFormHandler();
+        showToast('success', 'Lab Added Successfully');
       }
     }catch(e){
 
@@ -118,4 +117,4 @@ const AddRole = (props) => {
     </>
   );
 };
-export default AddRole;
+export default AddLab;

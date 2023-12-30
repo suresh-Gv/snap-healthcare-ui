@@ -50,16 +50,18 @@ const PublicRoutes = [
     ...defaultConfig,
   },
   {
-    path: "/lab/*",
+    path: "/labs/*",
     exact: true,
     element: Lab,
+    acl: ["any"],
     // acl:['role-list','role-edit'],
     ...defaultConfig,
   },
   {
-    path: "/clinic/*",
+    path: "/clinics/*",
     exact: true,
     element: ClinicContainer,
+    acl: ["any"],
     // acl:['role-list','role-edit'],
     ...defaultConfig,
     // Add more public routes as needed

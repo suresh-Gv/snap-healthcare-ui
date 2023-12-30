@@ -1,18 +1,19 @@
 import React from "react";
 import LogoIcon from "./LogoIcon";
-import { CompaniesIcon } from "./CompaniesIcon";
-import { ScheduleIcon } from "./AppointmentsIcon";
-import { WhiteboardIcon } from "./WhiteBoardIcon";
-import { PatientVisitIcon } from "./PatientVisit";
-import { LabIcon } from "./LabIcon";
-import { PatientChatIcon } from "./PatientChartIcon";
-import { ResultIcon } from "./ResultIcon";
-import { SettingsIcon } from "./SettingsIcon";
-import { EditIcon } from "./EditIcon";
-import { RemoveIcon } from "./RemoveIcon";
-import {UpdatetickIcon} from "./UpdatetickIcon";
+import  CompaniesIcon  from "./CompaniesIcon";
+import  ScheduleIcon from "./AppointmentsIcon";
+import  WhiteboardIcon  from "./WhiteBoardIcon";
+import  PatientVisitIcon  from "./PatientVisit";
+import  LabIcon  from "./LabIcon";
+import  PatientChatIcon  from "./PatientChartIcon";
+import  ResultIcon  from "./ResultIcon";
+import  SettingsIcon  from "./SettingsIcon";
+import  EditIcon  from "./EditIcon";
+import  RemoveIcon  from "./RemoveIcon";
+import UpdatetickIcon from "./UpdatetickIcon";
 import CancelIcon from "./CancelIcon";
 import Permission from "./PermissionIcon";
+import ProfileIcon from "./ProfileIcon";
 
 const Icons = (props) => {
   const { type } = props;
@@ -43,8 +44,10 @@ const Icons = (props) => {
         return <RemoveIcon {...props} />;
     case "Update":
         return <UpdatetickIcon {...props} />;
-        case "Permission":
-          return <Permission {...props} />;
+    case "Permission":
+      return <Permission {...props}/>;
+    case "ProfileIcon":
+      return <ProfileIcon {...props}/>;
     default:
       return <></>;
   }
