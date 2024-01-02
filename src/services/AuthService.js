@@ -69,6 +69,28 @@ const AuthService = {
     // Check if the token exists and is not expired
     return !!token; // You might want to enhance this with token expiration checks
   },
+  forgetPasswordEmailResetLink:async (formData,resetURL)=>{
+    try {
+      let body={"email":formData.email,"resetURL":resetURL}
+      const response = await http.POST('forgot-password',body);
+      if(response.status===200 && response.data){
+        return response.data;    
+      }
+    } catch (error) {
+      console.log('Error during login:', error);
+    //   throw error;
+    }
+  },
+  resetPassword:async(body) => {
+    try {
+      const response = await http.POST('reset-password',body);
+      console.log("res",response);
+      return response;
+    } catch (error) {
+      console.log('Error during login:', error);
+    //   throw error;
+    }
+  }
 };
 
 export default AuthService;

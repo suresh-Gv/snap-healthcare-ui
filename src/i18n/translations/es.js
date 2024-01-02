@@ -12,7 +12,11 @@ export default {
       returnToLogin: 'Volver al inicio de sesión',
       submit: 'Enviar',
       PasswordRecovery: 'Recuperación de Contraseña',
-      enterEmailAddress: 'Ingrese su dirección de correo electrónico'
+      enterEmailAddress: 'Ingrese su dirección de correo electrónico',
+      ResetPassword:'Restablecer la contraseña',
+      EnterPassword:'Introducir la contraseña',
+      ReEnterPassword:'Escriba la contraseña otra vez',
+      resetPasswordDescription:'Ingrese su dirección de correo electrónico y le enviaremos un enlace para restablecer su contraseña.'
 
     };
     

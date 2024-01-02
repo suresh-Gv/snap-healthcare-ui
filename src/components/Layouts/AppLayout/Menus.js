@@ -2,6 +2,7 @@ import React, {useRef } from "react";
 import Icons from "../../UI/Icons";
 import Buttons from "../../UI/Buttons";
 import Acl from "../../../hoc/Acl";
+import { Link } from "react-router-dom";
 // import { useNavigate } from "react-router-dom"
 
 const Menus = (props) => {
@@ -26,9 +27,10 @@ const Menus = (props) => {
         >
           <div className="sh_logoIcon">
             <div className="sidebar-brand-icon">
-              <a href='/dashboard'>
-              <Icons type={`Logo`} />
-              </a>
+                <Link to="/dashboard"> 
+                <Icons type={`Logo`} />
+                </Link>
+                
             </div>
           </div>
         </a>

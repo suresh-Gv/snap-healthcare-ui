@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import Wrap from "../../hoc/Wrap";
 import LoginForm from "./LoginForm";
+import { ForgetPassword } from "./ForgetPassword";
+import { ResetPassword } from "./ResetPassword";
 // import TextInput from "../../components/UI/FormInputs/TextInput";
-import {ForgetPassword, ResetPassword } from "./ForgetPassword";
 
 const AuthContainer = () => {
   // const forgetPasswordInput={

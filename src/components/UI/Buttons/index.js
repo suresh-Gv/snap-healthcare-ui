@@ -4,6 +4,7 @@ import { isSet } from '../../../utils/commonUtils';
 import Icons from '../Icons';
 import withReduxState from '../../../hoc/wReduxState';
 import { acl_check } from '../../../utils/aclUtils';
+import { Link } from 'react-router-dom';
 
 const Button = ({ label, iconType, className, clickHandler, acl,title,profile,accessType,href='#!',children }) => {
     let hasAccess = true;
@@ -20,16 +21,17 @@ const Button = ({ label, iconType, className, clickHandler, acl,title,profile,ac
       opacity: isSet(hasAccess,true) ? 1 : 0.5, // Adjust opacity based on access
     };
       return (
-        <a
-          className={className}
-          onClick={(isSet(hasAccess,true))?clickHandler:()=>{}}
-          title={!isSet(hasAccess,true) ? 'No permission' : isSet(title,'')} // Add title if no permission
-          style={buttonStyle}
-          href={href}  >
-            {(iconType!==null)? <Icons type={iconType} />:<></>}
-            {(label!==null)? label:''}
-            {(children && children!==null)? children:''}
-        </a>
+        <Link
+        className={className}
+        onClick={hasAccess ? clickHandler : () => {}}
+        title={!hasAccess ? 'No permission' : title}
+        style={buttonStyle}
+        to={href} // Use 'to' instead of 'href' for React Router
+      >
+        {iconType !== null ? <Icons type={iconType} /> : null}
+        {label !== null ? label : ''}
+        {children && children !== null ? children : ''}
+      </Link>
       );
     };
 

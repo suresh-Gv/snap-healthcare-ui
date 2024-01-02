@@ -76,3 +76,60 @@ export const preventNonNumericalInput = (event) => {
     }
   };
   
+  export const isStrongPassword = (password) => {
+    const minLength = 8;
+  const hasUppercase = /[A-Z]/.test(password);
+  const hasLowercase = /[a-z]/.test(password);
+  const hasNumber = /\d/.test(password);
+  const hasSpecialChar = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(password);
+
+  if (
+    password.length >= minLength &&
+    hasUppercase &&
+    hasLowercase &&
+    hasNumber &&
+    hasSpecialChar
+  ) {
+    return []; // Password is strong
+  }
+
+  // Password is weak, construct and return a validation message
+  const validationMessages = [];
+  if (password.length < minLength) {
+    validationMessages.push("Password must be at least 8 characters long.");
+  }else
+  if (!hasUppercase) {
+    validationMessages.push("Password must contain at least one uppercase letter.");
+  }
+  if (!hasLowercase) {
+    validationMessages.push("Password must contain at least one lowercase letter.");
+  }
+  if (!hasNumber) {
+    validationMessages.push("Password must contain at least one number.");
+  }
+  if (!hasSpecialChar) {
+    validationMessages.push("Password must contain at least one special character.");
+  }
+
+  return validationMessages;
+  };
+  export const getPasswordStrength = (password) => {
+    const minLength = 8;
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    // Check if the password meets all criteria
+    if (
+      password.length >= minLength &&
+      hasUppercase &&
+      hasLowercase &&
+      hasNumber &&
+      hasSpecialChar
+    ) {
+      return 'Strong Password';
+    } else {
+      return 'Weak Password';
+    }
+  };
