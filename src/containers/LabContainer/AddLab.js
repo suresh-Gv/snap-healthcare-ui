@@ -21,7 +21,7 @@ const AddLab = (props) => {
   const { isOpen,addFormHandler, modelTitle } =props;
     const inputFields = [
         {
-            fieldType: "TextInput",
+            type: "TextInput",
             label: "Lab",
             placeholder: "Lab Name",
             className: "form-control form-control-fields",
@@ -29,7 +29,7 @@ const AddLab = (props) => {
             value:formData.name,
           },
           {
-            fieldType: "TextArea",
+            type: "TextArea",
             label: "Description",
             placeholder: "Description",
             className: "form-control form-control-fields",

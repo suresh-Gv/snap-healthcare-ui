@@ -74,7 +74,7 @@ class UserList extends Component {
                         <div className="form-group-fields row">
                           <div className="col-md-2 px-1">
                             <FormInputs
-                              fieldType="SelectList"
+                              type="SelectList"
                               options={rolesForFilter}
                               value={filters['role']}
                               changeHandler={(val)=>this.onChangeFiltersHandler('role',val)}
@@ -82,6 +82,7 @@ class UserList extends Component {
                           </div>
                           <div className="col-md-2 px-1">
                             <FormInputs 
+                              type="TextInput"
                               placeholder="Name"
                               value={filters["name"]}
                               changeHandler={(val)=>this.onChangeFiltersHandler('name',val)}
@@ -89,6 +90,7 @@ class UserList extends Component {
                           </div>
                           <div className="col-md-2 px-1">
                           <FormInputs 
+                              type="TextInput"
                               placeholder="Email"
                               value={filters["email"]}
                               changeHandler={(val)=>this.onChangeFiltersHandler('email',val)}
@@ -96,6 +98,7 @@ class UserList extends Component {
                           </div>
                           <div className="col-md-2 px-2">
                             <FormInputs 
+                              type="TextInput"
                               fieldType='Phone'
                               placeholder="Phone"
                               value={filters["phone"]}

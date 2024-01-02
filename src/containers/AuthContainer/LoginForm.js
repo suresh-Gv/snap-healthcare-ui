@@ -71,7 +71,7 @@ const LoginForm = () => {
                           <div className="form-group">
                             {/* <input type="email" className="form-control form-control-user" id="" aria-describedby="" placeholder="Email Address"/> */}
                             <FormInputs
-                              fieldType="TextInput"
+                              type="TextInput"
                               value={email}
                               changeHandler={(e) =>{setValidation(''); setEmail(e)}}
                               style={styles.input}
@@ -82,7 +82,7 @@ const LoginForm = () => {
 
                           <div className="form-group">
                             <FormInputs
-                              fieldType="Password"
+                              type="Password"
                               value={password}
                               changeHandler={(e) => {setValidation('');setPassword(e);}}
                               style={styles.input}

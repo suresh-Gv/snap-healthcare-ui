@@ -18,7 +18,7 @@ const AddFormModal = (props) => {
   const { isOpen, roles,addFormHandler, modelTitle } =props;
     const inputFields = [
       {
-        fieldType: "SelectList",
+        type: "SelectList",
         label: "Role",
         options: roles,
         placeholder: "",
@@ -27,7 +27,7 @@ const AddFormModal = (props) => {
         value: formData.assigned_role  ,
       },
       {
-        fieldType: "TextInput",
+        type: "TextInput",
         label: "Email",
         placeholder: "Email",
         className: "form-control form-control-fields",
@@ -35,7 +35,7 @@ const AddFormModal = (props) => {
         value: formData.email,
       },
       {
-        fieldType: "TextInput",
+        type: "TextInput",
         label: "First Name",
         placeholder: "First Name",
         className: "form-control form-control-fields",
@@ -43,7 +43,7 @@ const AddFormModal = (props) => {
         value: formData.first_name,
       },
       {
-        fieldType: "TextInput",
+        type: "TextInput",
         label: "Last Name",
         placeholder: "Last Name",
         className: "form-control form-control-fields",
@@ -52,7 +52,7 @@ const AddFormModal = (props) => {
   
       },
       {
-        fieldType: "Phone",
+        type: "Phone",
         label: "Phone Number",
         placeholder: "Number",
         className: "form-control form-control-fields",
@@ -60,7 +60,7 @@ const AddFormModal = (props) => {
         value: formData.phone_number,
       },
       {
-          fieldType: "Date",
+        type: "Date",
           label: "Date of Birth",
           placeholder: "",
           className: "form-control form-control-fields",

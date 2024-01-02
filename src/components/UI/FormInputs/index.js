@@ -1,42 +1,33 @@
 import Checkbox from "./Checkbox";
-import { DatePicker } from "./DatePicker";
+import DatePicker from "./DatePicker";
 import Password from "./Password";
 import PhoneNumber from "./PhoneNumber";
 import SelectList from "./SelectList";
-import { TextArea } from "./TextArea";
+import TextArea  from "./TextArea";
 import TextInput from "./TextInput";
 
  const FormInputs = (props) => {
-  let dispFormCont = null;
-  switch (props.fieldType) {
+  const {type} = props;
+  switch (type) {
     case "TextInput":
-      dispFormCont = <TextInput {...props} />;
-      break;
+      return <TextInput {...props} />;
     case "Checkbox":
-        dispFormCont = <Checkbox {...props} />;
-        break;
+        return <Checkbox {...props} />;
     case "Password":
-      dispFormCont = <Password {...props} />;
-      break;
+      return <Password {...props} />; ;
     case "SelectList":
-      dispFormCont = <SelectList {...props} />;
-      break;
+      return <SelectList {...props} />; ;
     case "MultiSelectList":
-      dispFormCont = <SelectList {...props} />;
-      break;
+      return <SelectList {...props} />; ;
     case "Date":
-      dispFormCont = <DatePicker {...props} />;
-      break;
+      return <DatePicker {...props} />; ;
     case "Phone":
-      dispFormCont = <PhoneNumber {...props} />;
-      break;
+      return <PhoneNumber {...props} />; ;
      case 'TextArea':
-        dispFormCont= <TextArea {...props}/>
-      break;
+        return <TextArea {...props}/> ;
     default:
-      dispFormCont = <TextInput {...props} />;
+      return <TextInput {...props} />;
   }
-  return <>{dispFormCont}</>;
 };
 
 export default FormInputs;

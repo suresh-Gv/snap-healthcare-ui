@@ -66,7 +66,7 @@ export const Tables = (props) => {
                                     <FormInputs 
                                         className="form-check-input"
                                         id={`checkbox_${itmIndex}_${itemIndex}`}
-                                        fieldType="Checkbox"
+                                        type="Checkbox"
                                         name={item.label}
                                         value={(isSet(props.permissons,[]).indexOf(value)!==-1)?true:false}
                                         changeHandler={(bool)=>{

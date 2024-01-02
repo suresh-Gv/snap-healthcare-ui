@@ -21,7 +21,7 @@ const AddRole = (props) => {
   const { isOpen, roles,addFormHandler, modelTitle } =props;
     const inputFields = [
         {
-            fieldType: "TextInput",
+            type: "TextInput",
             label: "Role",
             placeholder: "Role",
             className: "form-control form-control-fields",
@@ -29,7 +29,7 @@ const AddRole = (props) => {
             value:formData.name,
           },
           {
-            fieldType: "TextArea",
+            type: "TextArea",
             label: "Description",
             placeholder: "Description",
             className: "form-control form-control-fields",
