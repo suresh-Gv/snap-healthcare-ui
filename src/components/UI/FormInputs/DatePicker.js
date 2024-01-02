@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const DatePicker = (props) => {
+ const DatePicker = (props) => {
   const { className, value, changeHandler, placeholder } = props;
 
   return (
@@ -15,3 +15,5 @@ export const DatePicker = (props) => {
     />
   );
 };
+
+export default DatePicker;
