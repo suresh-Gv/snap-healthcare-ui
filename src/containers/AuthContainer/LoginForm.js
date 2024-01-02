@@ -107,10 +107,7 @@ const LoginForm = () => {
                         </form>
 
                         <div className="text-left">
-                        <Link to="forgetPassword" className="action-text">{_t('ForgotPassword')}</Link>
-                          /
-                       <Link to="FirstTimeUser" className="action-text">{_t('FirstTimeUser')}</Link>
-
+                        <Link to="forgetPassword" className="action-text">{_t('ForgotPassword')}/{_t('FirstTimeUser')}</Link>
                         </div>
 
                         <div className="text-left">
