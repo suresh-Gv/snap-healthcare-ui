@@ -22,6 +22,7 @@ const AddFormModal = (props) => {
         label: "Role",
         options: roles,
         placeholder: "",
+        // required:true,
         className: "form-control form-control-fields",
         name: "assigned_role",
         value: formData.assigned_role  ,
@@ -32,11 +33,13 @@ const AddFormModal = (props) => {
         placeholder: "Email",
         className: "form-control form-control-fields",
         name: "email",
+        required:true,
         value: formData.email,
       },
       {
         type: "TextInput",
         label: "First Name",
+        required:true,
         placeholder: "First Name",
         className: "form-control form-control-fields",
         name:"first_name",
@@ -68,13 +71,15 @@ const AddFormModal = (props) => {
           value: formData.dob,
         },
     ];
-    const changeHandler = (val, e) => {
-      let fieldName = e.target.name;
+    const changeHandler = (val, fieldName) => {
       let updateValidation = {...validation};
-      setValidation({
-        ...updateValidation,
-        [fieldName]:''
-      });
+      if(isSet(validation[fieldName],'')!==''){
+        setValidation({
+          ...updateValidation,
+          [fieldName]:''
+        });
+      }
+      
       setFormData({
           ...formData,
           [fieldName]: val,
@@ -123,17 +128,21 @@ const AddFormModal = (props) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="row">
+          <div className="row ">
             {inputFields &&
-              inputFields.map((field, index) => (
-                <div className="col-12" key={index}>
-                  <div className="form-group">
-                    <label className="text-gray-900 text-md"> {field.label} </label>
-                    <FormInputs {...field} changeHandler={changeHandler} />
-                    {isSet(validation[field.name],'')!=='' ? <span className="text-danger m-1">{isSet(validation[field.name],'')}</span> : ''}
+              inputFields.map((field, index) => {
+                const className = (isSet(field.required==true) && Object.keys(validation).length>0)?'was-validated':'';
+                
+                return(
+                  <div className={`col-12 ${className}`} key={index}>
+                    <div className="form-group">
+                      <label className="text-gray-900 text-md"> {field.label} </label>
+                      <FormInputs {...field} changeHandler={(val)=>changeHandler(val,field.name)} />
+                      {isSet(validation[field.name],'')!=='' ? <span className="text-danger m-1">{isSet(validation[field.name],'')}</span> : ''}
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
           </div>
         </Modal.Body>
 

@@ -223,3 +223,7 @@ button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disab
   border-radius: 0.35rem;
   opacity: 0.5;
 }
+
+.checkbox-container label {
+  margin-top: 0.5rem;
+}

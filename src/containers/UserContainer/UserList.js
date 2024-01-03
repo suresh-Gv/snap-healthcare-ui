@@ -29,7 +29,7 @@ class UserList extends Component {
           { label: 'Role', key: 'role', type: ''},
           { label: 'First Name', key: 'firstName',inputType:'TextInput' },
           { label: 'Last Name', key: 'lastName',inputType:'TextInput' },
-          { label: 'DOB', key: 'dob', inputType:'TextInput'},
+          { label: 'DOB', key: 'dob', inputType:'Date'},
           { label: 'Email', key: 'email',inputType:'TextInput'},
           { label: 'Phone', key: 'phone'},
           { label: 'Active', key: 'active', inputType: 'Checkbox' },
@@ -148,8 +148,8 @@ class UserList extends Component {
                   </div>
                 </div>
 
-                <div className="card-body">
-                  <div className="datatable-container dataTable">
+                <div className="card-body p-0">
+                  <div className="table-responsive datatable-container dataTable">
                     <TableGrid 
                       {...tableRecords} 
                       gridEditProps={{
@@ -263,7 +263,7 @@ class UserList extends Component {
               dob: user.dob,
               email: user.email,
               phone: isSet(user.phone_number,'000-000-0000'),
-              active: (user.active_status===true)?'Yes':'No',
+              active: (user.active_status==true)?'Yes':'No',
               action: [{
                 className:'btn btn-datatable btn-icon btn-transparent-dark',
                 iconType:'Edit',
@@ -320,10 +320,10 @@ class UserList extends Component {
       value:''
     }];
     rolesResponse.map((itm) => {
-      let obj = { label: itm.name.replace(/_/g, ' '), value: itm.id };
+      let obj = { label: capitalizeFirstLetter(itm.name).replace(/_/g, ' '), value: itm.id };
       roles.push(obj);
 
-      let objName = { label: itm.name.replace(/_/g, ' '), value: itm.name };
+      let objName = { label: capitalizeFirstLetter(itm.name).replace(/_/g, ' '), value: itm.name };
       rolesForFilter.push(objName);
     });
     this.setState({ roles,rolesForFilter });

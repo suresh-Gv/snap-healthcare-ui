@@ -12,6 +12,7 @@ const TextInput = (props)=>{
     value,
     style,
     name,
+    required
   } = props;
   // Handler
    const {
@@ -29,7 +30,8 @@ const TextInput = (props)=>{
           placeholder={placeholder}
           value={value}
           {...style}
-          onChange={(e)=>onChangeHandler(e)}    />    
+          required={required}
+          onChange={(e)=>onChangeHandler(e)}   />    
     )
 }
 TextInput.defaultProps = {
@@ -39,6 +41,7 @@ TextInput.defaultProps = {
   placeholder:'',
   value:'',
   style:{},
+  required:false,
   validation:{
     isValid:true,message:''
   },

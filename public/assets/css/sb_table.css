@@ -34,7 +34,7 @@ tr.Tdheading td:last-child {
   text-decoration: none; 
 }
 .dataTable table tbody tr.Tdheading td {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .datatable-wrapper.no-header .datatable-container {

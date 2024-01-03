@@ -38,7 +38,7 @@ export const Tables = (props) => {
                   </a>
                 </td>
               </tr>
-              <tr id="r1" className="accordion-collapse collapse">
+              <tr id="r1" className="accordion-collapse collapse show">
                 <td colspan=""></td>
                 <td colspan="2" className="p-0">
                   <table

@@ -4,7 +4,9 @@ import CheckboxInput from "../../FormInputs/Checkbox";
 const Checkbox = ()=>{
     return(
         <td>
-            <CheckboxInput changeHandler={()=>{}}/>
+            <div className="form-check">
+                <CheckboxInput changeHandler={()=>{}}/>
+            </div>
         </td>
     )
 }

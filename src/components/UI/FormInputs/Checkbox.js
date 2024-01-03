@@ -20,9 +20,10 @@ const CheckboxInput = (props) => {
   let isChecked = (value === true || isSet(value,'').toString().toLowerCase() === 'yes')?true:false;
   // console.log('checked',isChecked,props);
   return (
-    <div className={className}>
-      <label>
+    
+   
         <input
+          className='form-check-input'
           type="checkbox"
           checked={isChecked}
           style={style}
@@ -30,14 +31,13 @@ const CheckboxInput = (props) => {
           id={id}
           onChange={(e) => onChangeHandler(e)}
         />
-        {label}
-      </label>
-    </div>
+   
+  
   );
 };
 
 CheckboxInput.defaultProps = {
-  className: 'checkbox-container',
+  className: 'form-check',
   checked: false,
   value: false,
   name:'default',

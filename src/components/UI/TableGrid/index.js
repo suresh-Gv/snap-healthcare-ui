@@ -4,7 +4,7 @@ import TableBody  from "./TableBody";
 
 const TableGrid  = (props)=>{
     return(
-        <table className="table" width="100%" cellSpacing="0" style={{ width: "100%" }}>
+        <table className="table table-bordered" width="100%" cellSpacing="0" style={{ width: "100%" }}>
            <TableHeader {...props} />
            <TableBody {...props}/>
         </table>
