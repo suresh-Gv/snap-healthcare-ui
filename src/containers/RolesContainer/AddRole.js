@@ -53,7 +53,7 @@ const AddRole = (props) => {
     let updateValidation = {...validation};
     try{
       const data = await RolesService.saveRole(payload);
-      // console.log('Roledata',data);
+      console.log('Roledata',data);
       if(data.status && data.status=="ERROR"){
         if(isObject(data.data)){
           for (let key in data.data) {
@@ -71,9 +71,7 @@ const AddRole = (props) => {
           setValidation(updateValidation);
         }
       }else{
-        // props.fetchUserList();
-        // props.addFormHandler();
-        navigate('permissions')
+        navigate(`permissions/${btoa(data.id+'##'+data.name)}`)
         showToast('success', 'Role Added Successfully');
       }
     }catch(e){

@@ -23,6 +23,7 @@ export const ResetPassword = () => {
     reenterpasswordStrength:[],
   });
   const inputChangeHandler = (value, e) => {
+    console.log('value',value);
     let fieldName = e.target.name;
     setFormData({ ...formData, [fieldName]: value });
     setValidation({
@@ -118,7 +119,7 @@ export const ResetPassword = () => {
                   <div className="mb-3">
                     {/* <input className="form-control form-control-fields" id=" " type="password" aria-describedby="emailHelp" placeholder="Enter Password"/> */}
                     <FormInputs
-                      type="TextInput"
+                      type="Password"
                       className="form-control form-control-fields"
                       placeholder="Enter Password"
                       name="enterpassword"
@@ -139,7 +140,7 @@ export const ResetPassword = () => {
                   <div className="mb-3">
                     {/* <input className="form-control form-control-fields" id=" " type="password" aria-describedby="emailHelp" placeholder="Re-enter Password"/> */}
                     <FormInputs
-                      type="TextInput"
+                      type="Password"
                       className="form-control form-control-fields"
                       placeholder="Re-enter Password"
                       name="reenterpassword"

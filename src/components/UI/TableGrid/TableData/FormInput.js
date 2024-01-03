@@ -22,7 +22,7 @@ const FormInput = (props)=>{
         <Wrap>
             <td>
             <FormInputs 
-                fieldType={inputType}
+                type={inputType}
                 name={thHeadKey}
                 className={(inputType!=='Checkbox')?className:''}
                 changeHandler={(val)=>changeHandler(thHeadKey,val)}

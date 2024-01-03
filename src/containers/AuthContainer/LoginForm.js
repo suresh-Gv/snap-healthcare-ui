@@ -10,10 +10,12 @@ import {
 // import FormInputs from "../../components/UI/FormInputs";
 import AuthService from "../../services/AuthService";
 import FormInputs from "../../components/UI/FormInputs";
+import Card from "../../components/UI/Card";
 import UserService from "../../services/UserService";
 import { useDispatch } from 'react-redux';
 import {setProfileDetails} from '../../store/SessionSlice';
 import { useToast } from '../../context/ToaxtContext';
+import Buttons from "../../components/UI/Buttons";
 // import logo from '../../../public/assets/img/logo'
 
 
@@ -35,10 +37,10 @@ const LoginForm = () => {
         setValidation(isSet(userData.data.error,'Authentication failed')+'  The information you have provided cannot be authenticated. Check your login information and try again');
       }
       const isAuthenticated = AuthService.isAuthenticated();
-      console.log('isAuthenticated',isAuthenticated);
+      // console.log('isAuthenticated',isAuthenticated);
       if (isAuthenticated === true) {
         const profileData = await UserService.getUserProfile();
-        console.log('profileData',profileData);
+        // console.log('profileData',profileData);
         dispatch(setProfileDetails(profileData));
         navigate("/dashboard");
       }
@@ -46,9 +48,28 @@ const LoginForm = () => {
 
     }
     
+    
     //api/user_profile
     // console.log("Logging in with:", userData, AuthService.getToken());
   };
+  const footerBtn = {
+    type:'BtnList',
+    buttonList:[
+      {
+        clickHandler:handleLogin,
+        className:"btn btn-primary btn-user",
+        acl:'any',
+        label:_t('login'),
+      },
+      {
+        clickHandler:handleLogin,
+        className:"btn btn-primary btn-user",
+        label:_t('SelfRegister'),
+        acl:'any',
+      }
+    ]
+  }
+  
   return (
     <>
       
@@ -56,10 +77,7 @@ const LoginForm = () => {
           <div className="col-lg-6 min-vh-100 d-flex flex-column justify-content-center mx-auto">
             <div className="row">
               <div className="col-md-9 mx-auto">
-             
-                <div className="card sh_loginCard o-hidden border-0 my-5">
-                  
-                  <div className="card-body">
+                <Card className="sh_loginCard o-hidden border-0 my-5">
                     <div className="row">
                       <div className="col-lg-12">
                      
@@ -93,23 +111,18 @@ const LoginForm = () => {
 
                           <div className="form-group sh_loginButtons">
                             <div className="d-flex align-items-center justify-content-between">
-                              <a
-                                onClick={handleLogin}
-                                className="btn btn-primary btn-user"
-                              >
-                                {_t('login')}
-                              </a>
-                              <a href="#" className="btn btn-primary btn-user">
-                                {_t('SelfRegister')}
-                              </a>
+                              <Buttons {...footerBtn} />
                             </div>
                           </div>
                         </form>
 
                         <div className="text-left">
-                        <Link to="forgetPassword" className="action-text">{_t('ForgotPassword')}/{_t('FirstTimeUser')}</Link>
+                          <Buttons 
+                            href='/login/forgetPassword'
+                            className="action-text"
+                            acl='any'
+                            label={`${_t('ForgotPassword')}/${_t('FirstTimeUser')}`} />
                         </div>
-
                         <div className="text-left">
                           <hr className="my-2" />
                           <p>
@@ -118,8 +131,7 @@ const LoginForm = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                </Card>
               </div>
             </div>
           </div>

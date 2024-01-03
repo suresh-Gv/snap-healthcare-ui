@@ -99,7 +99,7 @@ class UserList extends Component {
                           <div className="col-md-2 px-2">
                             <FormInputs 
                               type="TextInput"
-                              fieldType='Phone'
+                              // type='Phone'
                               placeholder="Phone"
                               value={filters["phone"]}
                               changeHandler={(val)=>this.onChangeFiltersHandler('phone',val)}

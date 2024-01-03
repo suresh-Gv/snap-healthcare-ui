@@ -8,6 +8,7 @@
     const sideBarChangeHandler = () => {
       setSidebarShown(!isSidebarShown);
     };
+    
     const MenusData = [
       {
         title: "Companies",
@@ -82,8 +83,9 @@
 
 
     ];
+    // isSidebarShown ? "show-sidebar" : 
     return (
-      <div class={isSidebarShown ? "show-sidebar" : ""}>
+      <div className={""}>
         <div id="wrapper">
           <Menus
             MenusData={MenusData}

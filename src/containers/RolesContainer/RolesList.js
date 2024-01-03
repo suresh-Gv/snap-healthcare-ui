@@ -7,6 +7,7 @@ import FormInputs from '../../components/UI/FormInputs';
 import moment from 'moment';
 import { capitalizeFirstLetter, isSet } from '../../utils/commonUtils';
 import Buttons from '../../components/UI/Buttons';
+import Card from '../../components/UI/Card';
 
 // import { AddFormModal } from '../DashboardContainer/AddFormModal';
 
@@ -86,9 +87,9 @@ class RolesList extends Component {
       <div>
         <div className="row h-100">
           <div className="col-md-12 overflow-auto h-100">
-            <div className="card">
-              <div className="card-header">
-                <div className="row">
+            <Card>
+              <Card.Header>
+              <div className="row">
                   <div className="col-12">
                     <div className="form-group d-flex mb-0 justify-content-between">
                       <div className="form-group-fields row">
@@ -140,9 +141,8 @@ class RolesList extends Component {
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="card-body">
+              </Card.Header>
+              <Card.Body>
                 <div className="datatable-container dataTable">
                   <TableGrid 
                       {...tableRecords} gridEditProps={{
@@ -151,8 +151,8 @@ class RolesList extends Component {
                         onChangeFormDataInEdit:this.onChangeFormDataInEdit,
                       }}/>
                 </div>
-              </div>
-            </div>
+              </Card.Body>
+            </Card>
           </div>
         </div>
       </div>

@@ -49,11 +49,12 @@ const Menus = (props) => {
             </Acl>
           );
         })}
-        <li className="nav-item">
+        <li className="nav-item " >
           <a
-            className="nav-link"
+            className="nav-link js-menu-toggle"
             href={"#"}
-            onClick={(e) =>sideBarChangeHandler()}
+            // onClick={(e) =>sideBarChangeHandler()}
+            data-bs-toggle="collapse"
           >
             <span className="sh_menuIcon">
               <Icons type="Settings" />
