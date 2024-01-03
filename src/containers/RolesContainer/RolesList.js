@@ -9,7 +9,6 @@ import { capitalizeFirstLetter, isSet } from '../../utils/commonUtils';
 import Buttons from '../../components/UI/Buttons';
 import Card from '../../components/UI/Card';
 
-// import { AddFormModal } from '../DashboardContainer/AddFormModal';
 
 
 class RolesList extends Component {
@@ -208,7 +207,7 @@ class RolesList extends Component {
                       iconType:'Remove',
                       acl:'role-delete',
                       title:'Delete',
-                      clickHandler:()=>{}
+                      clickHandler:()=>this.deleteHandler(role.id),
                     },
                     { 
                       className:'btn btn-datatable btn-icon btn-transparent-dark',
@@ -216,7 +215,7 @@ class RolesList extends Component {
                       title:'Role Permission',
                       href:`/roles/permissions/${btoa(role.id+'##'+role.name)}`,
                       acl:'role-edit',
-                      clickHandler:()=>{}
+                      // clickHandler:()=>{}
                     }]
                 }
             }
@@ -234,6 +233,24 @@ class RolesList extends Component {
     }catch(e){
 
     }
+  }
+  deleteHandler = async (roleId)=>{
+    const { showToast } = this.context;
+    const userConfirmed = window.confirm('Are you sure you want to delete?');
+    if(userConfirmed){
+        try{
+            const data = await RolesService.deleteRole(roleId);
+          //   if(data.code!==200 && data.code!==201){
+          //     showToast('error', isSet(data.data,'Something went wrong..'));
+          //   }else{
+              showToast('success', 'Role Removed successfully');
+              this.fetchRolesList();
+          //   }
+          }catch(e){
+      
+          }
+    }
+    
   }
   editHandler = (rowId,data)=>{
     this.setState({

@@ -84,6 +84,31 @@ const RolesService = {
         // throw error;
       }  
     },
+    //Delete clinic
+    deleteRole:async (roleId)=>{
+      try {
+        const response = await http.DELETE(`roles/${roleId}`);
+        if(response.status && response.data){
+          const resData = response.data;
+          if((resData.code===200 || resData.code===201)  && resData.data){
+            return resData.data;
+          }else{
+            return null;
+          }
+        }else{
+          return null;
+        }
+      } catch (error) {
+        if(error.status){
+          const resData = error.data;
+          if(resData.code && resData.data){
+              return resData;
+          }
+        }
+        console.error('Error fetching user:', error);
+        throw error;
+      }  
+    },
 
      //Save user
      updateRolePermission:async (roleId,data)=>{

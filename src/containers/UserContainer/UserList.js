@@ -338,15 +338,15 @@ class UserList extends Component {
     if(userConfirmed){
       try{
         const data = await UserService.deleteUser(userId);
-        if(data.code!==200 && data.code!==201){
-          showToast('error', isSet(data.data,'Something went wrong..'));
-        }else{
+        // if(data.code!==200 && data.code!==201){
+        //   showToast('error', isSet(data.data,'Something went wrong..'));
+        // }else{
           showToast('success', 'User Removed successfully');
           this.fetchUserList();
-        }
-        console.log('userId',data);
+        // }
+        // console.log('userId',data);
       }catch(e){
-  
+        this.fetchUserList();
       }
     }
     
