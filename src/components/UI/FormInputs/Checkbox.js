@@ -10,7 +10,9 @@ const CheckboxInput = (props) => {
     style,
     name,
     changeHandler,
-    id
+    id,
+    readOnly,
+    disabled
   } = props;
 
   const onChangeHandler = (e) => {
@@ -29,6 +31,8 @@ const CheckboxInput = (props) => {
           style={style}
           name={name}
           id={id}
+          readOnly={readOnly}
+          disabled={disabled}
           onChange={(e) => onChangeHandler(e)}
         />
    
@@ -43,6 +47,8 @@ CheckboxInput.defaultProps = {
   name:'default',
   style: {},
   id:0,
+  readOnly:false,
+  disabled:false,
   onChangeHandler:()=>{}
 };
 

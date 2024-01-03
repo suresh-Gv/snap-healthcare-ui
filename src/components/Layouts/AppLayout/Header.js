@@ -5,6 +5,7 @@ import AuthService from "../../../services/AuthService";
 import Wrap from "../../../hoc/Wrap";
 import { useSelector } from 'react-redux';
 import Icons from "../../UI/Icons";
+import { capitalizeFirstLetter } from "../../../utils/commonUtils";
 
 const Header = (props)=>{
     const navigate = useNavigate();
@@ -47,7 +48,7 @@ const Header = (props)=>{
                            <span className="img-profile rounded-circle">
                            <Icons type={'ProfileIcon'} />
                            </span>
-                           <span className="ml-2 d-none d-lg-inline text-black text-lg">{_t(name+' '+role)}</span>
+                           <span className="ml-2 d-none d-lg-inline text-black text-lg">{_t(capitalizeFirstLetter(name)+' '+capitalizeFirstLetter(role)).replace(/_/g, ' ')}</span>
                        </a>
                     {/* <!-- Dropdown - User Information --> */}
                     <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

@@ -13,7 +13,7 @@ const AddFormModal = (props) => {
     first_name: '',
     last_name: '',
     phone_number: '',
-    dob: '12/03/1990',
+    dob: '',
   })
   const { isOpen, roles,addFormHandler, modelTitle } =props;
     const inputFields = [

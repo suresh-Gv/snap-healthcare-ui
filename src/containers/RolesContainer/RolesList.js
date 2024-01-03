@@ -8,6 +8,7 @@ import moment from 'moment';
 import { capitalizeFirstLetter, isSet } from '../../utils/commonUtils';
 import Buttons from '../../components/UI/Buttons';
 import Card from '../../components/UI/Card';
+import { isGlobalAdmin } from '../../utils/aclUtils';
 
 
 
@@ -76,8 +77,9 @@ class RolesList extends Component {
       <div>
         <div className="row h-100">
           <div className="col-md-12 overflow-auto h-100">
-            <Card>
-              <Card.Header>
+            <div className='card'>
+           
+              <div className='card-header'>
               <div className="row">
                   <div className="col-12">
                     <div className="form-group d-flex mb-0 justify-content-between">
@@ -130,8 +132,8 @@ class RolesList extends Component {
                     </div>
                   </div>
                 </div>
-              </Card.Header>
-              <Card.Body>
+              </div>
+              <div className='card-body'>
                 <div className="datatable-container dataTable">
                   <TableGrid 
                       {...tableRecords} gridEditProps={{
@@ -140,8 +142,8 @@ class RolesList extends Component {
                         onChangeFormDataInEdit:this.onChangeFormDataInEdit,
                       }}/>
                 </div>
-              </Card.Body>
-            </Card>
+                </div>
+            </div>
           </div>
         </div>
       </div>
@@ -171,7 +173,7 @@ class RolesList extends Component {
        rolesList.map((role,roleIndex)=>{
         const usDateTimeString = moment.utc(role.created_at).format('MMMM D, YYYY h:mm:ss A');
 
-
+        const isGlobal = isGlobalAdmin(role.name);
         tableData = [
             ...tableData,
             {   
@@ -188,14 +190,14 @@ class RolesList extends Component {
                       iconType:'Edit',
                       title:'Edit',
                       type:'GridEdit',
-                      acl:'role-edit',
+                      acl:(isGlobal===true)?'':'role-edit',
                       clickHandler:(rowId,data)=>this.editHandler(rowId,data),
                       updateHandler:()=>this.updateHandler(role.id),
                       onChangeFormDataInEdit:(key,val)=>this.onChangeFormDataInEdit(key,val)
                     },{ 
                       className:'btn btn-datatable btn-icon btn-transparent-dark',
                       iconType:'Remove',
-                      acl:'role-delete',
+                      acl:(isGlobal===true)?'':'role-delete',
                       title:'Delete',
                       clickHandler:()=>this.deleteHandler(role.id),
                     },

@@ -3,6 +3,7 @@ import { capitalizeFirstLetter } from "../../utils/commonUtils";
 import { isSet } from "../../utils/commonUtils";
 
 export const Tables = (props) => {
+  const {isGlobal} = props;
   const access = ['list','create','edit','delete'];
   return (
     <>
@@ -31,8 +32,8 @@ export const Tables = (props) => {
                     href="#"
                     data-bs-toggle="collapse"
                     data-bs-target="#r1"
-                    aria-expanded="false"
-                    className="collapsed"
+                    aria-expanded="true"
+                    className=""
                   >
                     User & Roles
                   </a>
@@ -67,6 +68,7 @@ export const Tables = (props) => {
                                         className="form-check-input"
                                         id={`checkbox_${itmIndex}_${itemIndex}`}
                                         type="Checkbox"
+                                        disabled={(isGlobal===true)?true:false}
                                         name={item.label}
                                         value={(isSet(props.permissons,[]).indexOf(value)!==-1)?true:false}
                                         changeHandler={(bool)=>{

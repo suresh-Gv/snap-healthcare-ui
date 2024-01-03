@@ -21,3 +21,12 @@ export const acl_check = (permissions, aclStrings) => {
         return permissions?.[resource]?.[action];
     });
   };
+
+
+  export const isGlobalAdmin = (roleName)=>{
+    if(roleName==='global_admin'){
+        return true;
+    }else{
+        return false;
+    }
+  }

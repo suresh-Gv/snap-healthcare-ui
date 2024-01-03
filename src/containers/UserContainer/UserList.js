@@ -216,7 +216,7 @@ class UserList extends Component {
       console.log('data',data);
       
     }catch(e){
-
+        console.log('e',e);
     }
     this.fetchUserList();
   }

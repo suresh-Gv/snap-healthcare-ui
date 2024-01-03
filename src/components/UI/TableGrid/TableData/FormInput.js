@@ -18,9 +18,12 @@ const FormInput = (props)=>{
 
     }
    console.log('disValue',disValue,thHeadKey);
+   const headerClassname = (inputType==='Checkbox')?'form-check':'';
+   const HocWrap = (inputType==='Checkbox')?'div':Wrap;
     return(
         <Wrap>
             <td>
+            <HocWrap className={headerClassname}>
             <FormInputs 
                 type={inputType}
                 name={thHeadKey}
@@ -28,6 +31,7 @@ const FormInput = (props)=>{
                 changeHandler={(val)=>changeHandler(thHeadKey,val)}
                 placeholder={label}
                 value={disValue} />
+                </HocWrap>
             </td>
         </Wrap>
     )

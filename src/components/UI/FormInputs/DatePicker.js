@@ -5,9 +5,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { unstable_useDateField as useDateField } from '@mui/x-date-pickers/DateField';
-import { isSet } from '../../../utils/commonUtils';
+// import { isSet } from '../../../utils/commonUtils';
 import { useClearableField } from '@mui/x-date-pickers/hooks';
-import moment from 'moment';
 import dayjs from 'dayjs'; // Import dayjs library
 
 
@@ -88,19 +87,19 @@ const BrowserDatePicker = React.forwardRef((props, ref) => {
   
   const {value,changeHandler} = props;
   const onChangeHandler = (_e,e)=>{
-    const formattedDate = dayjs(_e).format('DD/MM/YYYY');
+    const formattedDate = dayjs(_e).format('MM/DD/YYYY');
     changeHandler(formattedDate,e);
-    // console.log('ee',formattedDate);
   }
   const reverseFormattedDate = (formattedDate) => {
     let momentDate = '';
     try{
-      momentDate = moment(formattedDate, 'DD/MM/YYYY');
+      momentDate = dayjs(formattedDate, 'MM/DD/YYYY');
     }catch(e){
 
     }
     return momentDate;
   };
+  // console.log('reverseFormattedDate(value)',reverseFormattedDate(value));
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <BrowserDatePicker

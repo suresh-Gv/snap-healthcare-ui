@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { isSet } from "../../utils/commonUtils";
 import RolesService from "../../services/RoleService";
@@ -6,6 +7,7 @@ import { Tables } from "./Tables";
 import Buttons from "../../components/UI/Buttons";
 import { useToast } from '../../context/ToaxtContext';
 import { capitalizeFirstLetter } from "../../utils/commonUtils";
+import { isGlobalAdmin } from "../../utils/aclUtils";
 // import FormInputs from "../../components/UI/FormInputs";
 
 export const PermissionList = () => {
@@ -13,7 +15,7 @@ export const PermissionList = () => {
   const { roleId } = useParams();
   const decodedData = atob(roleId);
   const [rolId, roleName] = decodedData.split('##');
-
+  const isGlobal = isGlobalAdmin(roleName);
   const [permissonBody,setPermissionBody] = useState([]);
   const [permissons,setPermissions] = useState([]);
  
@@ -110,7 +112,11 @@ export const PermissionList = () => {
                       <div className="addAction">
                         <div className="btn-group ">
                          
-                          <Buttons clickHandler={()=>updatePermissionsHandler()} className="btn btn-primary" label={'Save'} acl={['role-edit']} />
+                          <Buttons 
+                            clickHandler={()=>updatePermissionsHandler()} 
+                            className="btn btn-primary" 
+                            label={'Save'} 
+                            acl={(isGlobal===true)?[]:['role-edit']} />
                           <Buttons href='/roles' className="btn btn-outline-secondary rounded-pill1" label={'Back'} acl={['role-list']} />
                         </div>
                       </div>
@@ -123,6 +129,7 @@ export const PermissionList = () => {
                 permisssionHeading={permisssionHeading}
                 permissonBody={permissonBody}
                 permissons={permissons}
+                isGlobal={isGlobal}
                 setPermissions={setPermissions}
               />
             </div>
