@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { isObject,isSet } from "../../utils/commonUtils";
 import FormInputs from "../../components/UI/FormInputs";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import RolesService from "../../services/RoleService";
 import { useToast } from '../../context/ToaxtContext';
 
@@ -11,7 +11,7 @@ import { useToast } from '../../context/ToaxtContext';
 const AddRole = (props) => {
   const { showToast } = useToast();
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
   const [validation,setValidation] = useState({});
 
   const [formData,setFormData] = useState({
@@ -56,7 +56,7 @@ const AddRole = (props) => {
       name:formData.name
     }
     let updateValidation = {...validation};
-    if (payload.name =='') {
+    if (payload.name ==='') {
       setValidation({
         ...validation,
         name:" Role Name is Required"
@@ -66,7 +66,7 @@ const AddRole = (props) => {
     try{
       const data = await RolesService.saveRole(payload);
       console.log('Roledata',data);
-      if(data.status && data.status=="ERROR"){
+      if(data.status && data.status==="ERROR"){
         if(isObject(data.data)){
           for (let key in data.data) {
             updateValidation = {

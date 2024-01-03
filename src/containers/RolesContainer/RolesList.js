@@ -63,16 +63,6 @@ class RolesList extends Component {
   addFormHandler=()=>{
     this.setState({isModelOpen:!this.state.isModelOpen})
   }
-
-  onChangeFiltersHandler =(key,val)=>{
-    const {filters} = this.state;
-    this.setState({
-      filters:{
-        ...filters,
-        [key]:val
-      }
-    })
-  }
   render() {
     const {tableRecords,filters} = this.state;
    

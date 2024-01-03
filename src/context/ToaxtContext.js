@@ -41,13 +41,13 @@ export const ToastProvider = ({ children }) => {
       <div style={{position:'absolute',top:'1rem',right:'1rem',zIndex:'9999'}}>
       {toasts.map((toast) => (
           <div key={toast.id} className={`toast ${types[toast.type]}`} role="alert" aria-live="assertive" aria-atomic="true" style={{ opacity: 1,minWidth:'350px' }}>
-          <div class={`toast-header text-${types[toast.type]}`}>
+          <div className={`toast-header text-${types[toast.type]}`}>
               <i data-feather="bell"></i>
-              <strong class="mr-auto">{capitalizeFirstLetter(toast.type)} </strong>
+              <strong className="mr-auto">{capitalizeFirstLetter(toast.type)} </strong>
               {/* <small class="text-muted ml-2">just now</small> */}
               <button className="ml-2 mb-1 btn-close" type="button" onClick={() => hideToast(toast.id)} aria-label="Close"></button>
           </div>
-          <div class="toast-body">{toast.message}</div>
+          <div className="toast-body">{toast.message}</div>
       </div>
        ))}
     </div>

@@ -7,9 +7,9 @@ const Table = (props) => {
 
   return (
     <>
-      <div class="card-body">
-        <div class="datatable-container dataTable">
-          <table class="table" width="100%" cellSpacing="0" style={{ width: "100%" }}>
+      <div className="card-body">
+        <div className="datatable-container dataTable">
+          <table className="table" width="100%" cellSpacing="0" style={{ width: "100%" }}>
            <TableHeader {...props} />
             <TableBody {...props}/>
           </table>

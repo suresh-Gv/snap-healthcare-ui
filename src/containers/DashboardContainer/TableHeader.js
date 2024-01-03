@@ -8,7 +8,7 @@ export const TableHeader=(props)=>{
                 </th>
                 {props.tableHeaders.map((item, itemIndex) => (
                   <th key={itemIndex}>
-                    <a href="#" class="datatable-sorter">
+                    <a href="#" className="datatable-sorter">
                       {item}
                     </a>
                   </th>

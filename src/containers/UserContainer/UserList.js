@@ -263,7 +263,7 @@ class UserList extends Component {
               dob: user.dob,
               email: user.email,
               phone: isSet(user.phone_number,'000-000-0000'),
-              active: (user.active_status==true)?'Yes':'No',
+              active: (user.active_status===true)?'Yes':'No',
               action: [{
                 className:'btn btn-datatable btn-icon btn-transparent-dark',
                 iconType:'Edit',
