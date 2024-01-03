@@ -40,6 +40,11 @@ const AddRole = (props) => {
     ];
     const changeHandler = (val, e) => {
       let fieldName = e.target.name;
+      const updateValidation = {
+        ...validation,
+        [fieldName]:''
+      }
+      setValidation(updateValidation);
       setFormData({
           ...formData,
           [fieldName]: val,
@@ -51,6 +56,13 @@ const AddRole = (props) => {
       name:formData.name
     }
     let updateValidation = {...validation};
+    if (payload.name =='') {
+      setValidation({
+        ...validation,
+        name:" Role Name is Required"
+      });
+      return false;
+    }
     try{
       const data = await RolesService.saveRole(payload);
       console.log('Roledata',data);
